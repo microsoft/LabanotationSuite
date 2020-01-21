@@ -1,0 +1,11 @@
+string filename # filename of the json file, should be absolute path
+bool execute    # true to execute the file, false to retrieve parsed data without execution
+---
+LabanotationTrajectory trajectory
+int32 error_code
+int32 SUCCESSFUL = 0
+int32 INVALID_GOAL = -1
+int32 OLD_HEADER_TIMESTAMP = -3
+int32 TIMEOUT = -6
+string error_string
+---
