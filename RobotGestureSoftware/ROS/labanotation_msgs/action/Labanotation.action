@@ -1,0 +1,14 @@
+LabanotationTrajectory trajectory
+---
+int32 error_code
+int32 SUCCESSFUL = 0
+int32 INVALID_GOAL = -1
+int32 OLD_HEADER_TIMESTAMP = -3
+int32 TIMEOUT = -6
+string error_string
+---
+Header header
+string[] joint_names
+trajectory_msgs/JointTrajectoryPoint desired
+trajectory_msgs/JointTrajectoryPoint actual
+trajectory_msgs/JointTrajectoryPoint error

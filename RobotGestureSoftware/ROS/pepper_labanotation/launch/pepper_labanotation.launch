@@ -1,0 +1,12 @@
+<launch>
+  <arg name="nao_ip" default=""/>
+  <arg name="nao_port" default=""/>
+
+  <node name="pepper_labanotation" pkg="pepper_labanotation" type="pepper_labanotation_action.py" output="screen">
+    <param name="nao_ip" value="$(arg nao_ip)"/>
+    <param name="nao_port" value="$(arg nao_port)"/>
+  </node>
+  <node name="pepper_labanotation_loader" pkg="labanotation_ros" type="robot_labanotation_loader.py" output="screen">
+    <param name="namespace" value="pepper_labanotation"/>
+  </node>
+</launch>

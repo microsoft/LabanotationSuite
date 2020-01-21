@@ -1,0 +1,1 @@
+python src\main.py --alg total --inputfile Ges01_wavehand.csv
