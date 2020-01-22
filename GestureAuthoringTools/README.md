@@ -1,6 +1,6 @@
-#![MARR_logo.png](/docs/MARR_logo.png)[Microsoft Applied Robotics Research Library: Labanotation Suite](/README.md)
+# ![MARR_logo.png](/docs/MARR_logo.png)[Microsoft Applied Robotics Research Library: Labanotation Suite](/README.md)
 
-#**Gesture Authoring Tools**
+# **Gesture Authoring Tools**
 ## [KinectReader](KinectReader/README.md)
 A compiled Windows application that connects to a Kinect sensor device and provides a user interface for capturing and storing gestures performed by human subjects. It's primary output data is human stick-figure joint positions in a .csv format, but can also capture corresponding RGB video and audio at the same time.
 
