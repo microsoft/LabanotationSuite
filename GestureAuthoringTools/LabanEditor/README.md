@@ -25,7 +25,7 @@ LabanEditor is a Python script application that loads a Kinect joint .csv file r
 
 *   Download and run the Python installer from this [link](https://www.python.org/ftp/python/2.7.10/python-2.7.10.amd64.msi)
 
-*   Download and run the ActiveTcl library (Tkinter) installer from this [link](https://pre-platform-installers.s3.amazonaws.com/ActiveTcl-8.6.9.8609.2-MSWin32-x64-5ccbd9ac8.exe?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJAFTYUXEZJ3HWLEQ%2F20191207%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20191207T002543Z&X-Amz-Expires=21600&X-Amz-SignedHeaders=host&X-Amz-Signature=98d154b3223ff4f25d92fe89eb2662bc0cd7f5d56740b472136551ff540617f7)
+*   Download and run the ActiveTcl library (Tkinter) installer from this [link](https://www.activestate.com/products/tcl/downloads/)
 
 *   Download the Pip installer to your installation folder from this [link](https://bootstrap.pypa.io/get-pip.py)
 
