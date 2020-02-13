@@ -3,7 +3,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)  
 
-**Authors:** Katsushi Ikeuchi, Zhaoyuan Ma, Zengqiang Yan, Shunsuke Kudoh, Minako Nakamura, Takuya Kiyokawa, Kazuhiro Sasabuchi, Naoki Wake, John Lee, David Baumert, Sven Pleyer
+**Authors:** Zhaoyuan Ma, Zengqiang Yan, Shunsuke Kudoh, Minako Nakamura, Takuya Kiyokawa, Kazuhiro Sasabuchi, Naoki Wake, John Lee, David Baumert, Katsushi Ikeuchi
 
 This Labanotation Suite repository contains a robot gesture authoring system comprised of software tools, source code, ROS packages and sample data that supports experimentation with the concepts presented in the paper **[Describing Upper-Body Motions Based on Labanotation for Learning-from-Observation Robots](https://link.springer.com/article/10.1007%2Fs11263-018-1123-1)(International Journal of Computer Vision, December 2018)**. This suite can be used to help robots speak and gesture in natural and meaningful ways.
 
