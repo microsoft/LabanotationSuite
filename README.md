@@ -83,3 +83,11 @@ doi="10.1007/s11263-018-1123-1",
 url="https://doi.org/10.1007/s11263-018-1123-1"
 }
 ```
+
+## [Data Protection Notice](https://msdpn.azurewebsites.net/default?LID=62)
+
+## [Microsoft Privacy Statement](https://privacy.microsoft.com/en-us/privacystatement/)
+
+## [Privacy & Cookies](https://go.microsoft.com/fwlink/?LinkId=521839)
+
+## Contact: [robotics@microsoft.com](mailto:robotics@microsoft.com)
