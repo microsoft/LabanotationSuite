@@ -48,12 +48,6 @@ An installable ROS package containing labanotation messages.
 ### msrabot_labanotation
 A sample implementation of a ROS node that can be used to drive gestures on the experimental MSRAbot robot.
 
-### aero_labanotation
-A sample implementation of a ROS node that can be used to drive gestures on [THK's Aero robot](https://www.seed-solutions.net/).
-
-### pepper_labanotation
-A sample implementation of a ROS node that can be used to drive gestures on [Softbank Robotics' Pepper robot](https://www.softbankrobotics.com/us/pepper).
-
 ## **FAQ**
 
 *   **Q** *Who should I contact regarding this repository?*
