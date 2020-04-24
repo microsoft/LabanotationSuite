@@ -1,4 +1,5 @@
-#![MARR_logo.png](/docs/MARR_logo.png)[Microsoft Applied Robotics Research Library: Labanotation Suite](/README.md)
+![MARR_logo.png](/docs/MARR_logo.png)Microsoft Applied Robotics Research Library
+# [Labanotation Suite](/README.md)
 
 # **MSRAbot Simulation Software**
 
@@ -26,7 +27,7 @@ Copy the entire **MSRAbotSimulation** folder into a convenient folder on your lo
 ```
 4. Open your favorite browser and open the URL http://localhost:8000
 
-**Note:** If you have installed the folder into an existing HTTP server, you do not need to run the previous python commands but will need to adjust the URL for that particular server.  For example: http://[your_server_name/your_installation_path]/MSRAbotSimulation/index.html:8000
+**Note:** If you have installed the folder into an existing HTTP server, you do not need to run the previous python commands but will need to adjust the URL for that particular server.  For example: http://[your_server_name/your_installation_path]/MSRAbotSimulation/index.html
 
 **MSRAbot Model Running in a Browser**
 ![LabanotationSuite_MSRAbot_in_browser.png](docs/LabanotationSuite_MSRAbot_in_browser.png)
