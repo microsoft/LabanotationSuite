@@ -1,4 +1,6 @@
-# ![MARR_logo.png](/docs/MARR_logo.png) [Microsoft Applied Robotics Research Library: Labanotation Suite](/README.md)
+# ![MARR_logo.png](/docs/MARR_logo.png) 
+# Microsoft Applied Robotics Research Library:
+# [Labanotation Suite](/README.md)
 
 # **KinectReader User Manual**
 
