@@ -1,4 +1,5 @@
-# ![MARR_logo.png](/docs/MARR_logo.png)[Microsoft Applied Robotics Research Library: Labanotation Suite](/README.md)
+![MARR_logo.png](/docs/MARR_logo.png)Microsoft Applied Robotics Research Library
+# [Labanotation Suite](/README.md)
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)  
 
