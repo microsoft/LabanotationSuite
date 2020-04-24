@@ -1,6 +1,0 @@
-<launch>
-  <node name="aero_labanotation" pkg="aero_labanotation" type="aero_labanotation" output="screen"/>
-  <node name="aero_labanotation_loader" pkg="labanotation_ros" type="robot_labanotation_loader.py" output="screen">
-    <param name="namespace" value="aero_labanotation"/>
-  </node>
-</launch>
