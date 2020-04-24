@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>MSRAbot</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+
+    <script type="text/javascript" src="js/libs/three.min.js"></script>
+    <script type="text/javascript" src="js/libs/stats.min.js"></script>
+    <script type="text/javascript" src="js/libs/dat.gui.min.js"></script>
+    <script type="text/javascript" src="js/libs/Tween.js"></script>
+    <script type="text/javascript" src="js/libs/loaders/GLTFLoader.js"></script>
+
+    <script type="text/javascript" src="js/libs/controls/DragControls.js"></script>
+    <script type="text/javascript" src="js/libs/controls/OrbitControls.js"></script>
+    <script type="text/javascript" src="js/libs/controls/TransformControls.js"></script>
+
+    <script>
+        var dev_version = '' + Math.floor(Math.random() * 100);
+        var js_files = ['utils', 'msrabot', 'labanotation', 'app'];
+
+        for (var i = 0; i < js_files.length; i++) {
+            document.write('<script src="js/' + js_files[i] + '.js?rand=' + dev_version + '"\><\/script>');
+        }
+    </script>
+</head>
+
+<body style="touch-action: none;">
+
+    <main id="app" style="width: 100%; height: 100%; "></main>
+    <div style="z-index:10001; position:fixed; left: 0; top: 0; color: #000; "><img src="images/Logo_RobotHandshake.png" width="64px" /></div>
+    <div style="z-index:10001; position:fixed; left: 80px; top: 0; color: #000;">
+        <div style="font-size: 1.8em; font-weight: bold; margin-bottom: -0.3em">Microsoft Applied Robotics Research Library</div><br />
+        <div style="font-size: 1.5em; font-weight: normal; margin-top: -0.3em"><a href="https://github.com/microsoft/LabanotationSuite">Labanotation Suite</a>: JSON Gesture Performance</div>
+    </div>
+    <script>
+        //
+        // no scrollbars
+        document.body.style.overflow = 'hidden';
+
+        run();
+
+        //--------------------------------------------------------------------------------------------
+        function run() {
+            _app = new APP(document.getElementById('app'));
+            if (_app) {
+                _app.initialize();
+
+                animate();
+            }
+        }
+        //--------------------------------------------------------------------------------------------
+        function animate() {
+            requestAnimationFrame(animate);
+
+            _app.update();
+            _app.render();
+        }
+    </script>
+</body>
+</html>
