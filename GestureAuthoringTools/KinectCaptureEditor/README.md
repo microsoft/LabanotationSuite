@@ -4,29 +4,30 @@
 # **KinectCaptureEditor User Manual**
 
 ## Introduction
-The Kinect Capture Editor displays Kinect skeletal tracking data and/or audio/video captured by the Kinect Reader utility.  Sections of the capture session may be saved to create excerpts of interest, allowing the user, for instance, to break the session into more manageable pieces or isolate individual segments.
+The KinectCaptureEditor tool is provided as a Windows binary application that displays skeletal tracking data and/or audio/video captured by the KinectReader tool.  Sections of the captured sessions may be trimmed and saved to create new data files of concise gestures.
 
-## System Requirements
+## Tested System Software
 - Microsoft Windows 10, 64-bit
-- A Kinect sensor is not needed.
+- Microsoft Visual C++ Runtime Library *(https://aka.ms/vs/16/release/vc_redist.x64.exe)*
 
 ## Installation
-The Kinect Capture Editor does not need to be installed.  Simply copy KinectCaptureEditor.exe into a convenient folder.
+Download the KinectCaptureEditor.exe file to a folder on your local machine.
+
 ## Example Use
-The user wishes to create a set of reference poses with associated audio and video.  Each individual pose is to have its own Kinect data and media file.
-- Using the Kinect Reader utility, the user captures themselves making the series of poses and vocally naming each pose.
-- The captured session is loaded into the Kinect Capture Editor using **File→Load Kinect Data…** and **File→Load Audio/Video File…** or **Ctrl+O** and **Shift+Ctrl+O** keys.
-- The range cursors are positioned to isolate the Kinect data, video, and audio excerpts for the first pose.
+The user wishes to create a set of reference gestures with associated audio and video.  Each individual gesture is to have its own Kinect data and media file.
+- Using the KinectReader tool, the user captures themselves making the series of poses and vocally naming each pose.
+- The captured session is loaded into the KinectCaptureEditor using **File→Load Kinect Data…** and **File→Load Audio/Video File…** or **Ctrl+O** and **Shift+Ctrl+O** keys.
+- The range cursors are positioned to isolate the Kinect data, video, and audio excerpts for the first gesture.
 - The range is played via **File→Play Range** or **F5** key to verify the excerpt.
-- The Kinect data and media files for the first pose are created using **File→Write Kinect Data…** and **File→Write Audio/Video File…** or **Ctrl+S** and **Shift+Ctrl+S** keys.
-- The range cursors are positioned for the next pose and the procedure repeated until all individual pose files have been created.
+- The Kinect data and media files for the first gesture are created using **File→Write Kinect Data…** and **File→Write Audio/Video File…** or **Ctrl+S** and **Shift+Ctrl+S** keys.
+- The range cursors are positioned for the next gesture and the procedure repeated until all individual gesture files have been created.
 
 ## Starting Up and Loading Files
 1. To begin, double-click **KinectCaptureEditor.exe** to run the application.
-1. Load the Kinect data by selecting **File→Load Kinect Data…** from the menu bar or pressing **Ctrl+S** to display the open file dialog.  Navigate to the folder containing the Kinect data created by the Kinect Reader utility, select the file (usually named **“joints.csv”**) and click **Open**.
+1. Load the Kinect data by selecting **File→Load Kinect Data…** from the menu bar or pressing **Ctrl+S** to display the open file dialog.  Navigate to the folder containing the Kinect data created by the KinectReader tool, select the file (usually named **“joints.csv”**) and click **Open**.
 1. Load the corresponding audio/video file by selecting **File→Load Audio/Video File…** or pressing **Shift+Ctrl+S** to display the open file dialog and select the media file corresponding to the Kinect data (usually named **“audiorecording.wav”** or **“videorecording.wmv”**.)
 
-**Note** that loading both files are not required—the Kinect Capture Editor supports loading only one or the other.  If both are loaded, the Kinect data and media files need not be the same length.  Media files may be any format supported by Windows Media Foundation.
+**Note** Loading both skeletal tracking data and audio/video files is not required.  If both are loaded, the Kinect data and media files need not be the same length.  Media files may be any format supported by Windows Media Foundation.
 
 ## The User Interface
  ![KinectCaptureEditor_Fig1.jpg](./docs/KinectCaptureEditor_Fig1.jpg)
@@ -74,7 +75,7 @@ There are two ways to play the currently loaded Kinect data and audio/video:
 - Selecting **Play→Play Range** from the menu bar or pressing the **F5** key will play the data frames and media within the selected range.
 - Selecting **Play→Play All** or pressing **Shift+F5** will play the entire timeline.
 
-The Kinect Capture Editor plays the Kinect data, video, and audio as close to real-time as possible.  The Current Position Cursor indicates the current time during playback and returns to its previous position when playback stops.  Playback stops automatically at the end of the range or timeline and can be manually stopped by selecting **Play→Stop Play** or pressing the **Esc** key.
+KinectCaptureEditor plays the Kinect data, video, and audio as close to real-time as possible.  The Current Position Cursor indicates the current time during playback and returns to its previous position when playback stops.  Playback stops automatically at the end of the range or timeline and can be manually stopped by selecting **Play→Stop Play** or pressing the **Esc** key.
 
 If the Kinect data or video track is shorter than the play duration, the Frame Display pane will show the last Kinect data frame and/or video frame.  If the audio track is shorter, audio stops for the remainder of the play duration.
 
@@ -84,9 +85,9 @@ To create an excerpt or portion of the loaded Kinect data frames and/or media fi
 1. To create a Kinect data excerpt, select File→Write Kinect Data… or press Ctrl+S to display the save file dialog.  Enter a new name for the Kinect data frames and click Save.
 1. To create a media excerpt, select File→Write Audio/Video File… or press Shift+Ctrl+S to display the save file dialog.  Enter a new name for the media file and click Save.
 
-Excerpt files can be loaded back into the Kinect Capture Editor using the File→Load commands.
+Excerpt files can be loaded back into KinectCaptureEditor using the File→Load commands.
 
-The Range Start and Range End cursors need not be positioned exactly on the starting time of a Kinect data frame.  The Kinect Capture Editor will set to duration of the first and last data frames written to the file to match the cursor positions.  Video and audio excerpts are adjusted similarly.
+The Range Start and Range End cursors need not be positioned exactly on the starting time of a Kinect data frame.  KinectCaptureEditor will set to duration of the first and last data frames written to the file to match the cursor positions.  Video and audio excerpts are adjusted similarly.
 
 **Note:** Media excerpts are always written using the Windows Media Audio 8/Video 8 codecs at this time.
 
@@ -94,7 +95,7 @@ The Range Start and Range End cursors need not be positioned exactly on the star
 
 ### Menus
 
-####File Menu
+#### File Menu
  ![KinectCaptureEditor_Fig5.jpg](./docs/KinectCaptureEditor_Fig5.jpg)
 
 |Menu Item  |Description  |
@@ -131,6 +132,3 @@ The Range Start and Range End cursors need not be positioned exactly on the star
 |Ctrl+S	|Write range to a Kinect data file|
 |Shift+Ctrl+S	|Write range to a media file|
 |Alt+F4	|Exit the application|
-
-
-
