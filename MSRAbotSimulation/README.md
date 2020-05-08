@@ -41,7 +41,7 @@ Animated gestures are viewed in the browser by selecting and loading JSON files.
 
 ### Select a Gesture
 
-Changing the gesture to be viewed is performed by clicking the drop-down text box in the upper-right corner of the browser screen. A selection of sample gestures are available, as well as an ability to load a newly created gesture stored on the local computer:
+Changing the gesture to be viewed is performed by selecting the drop-down text box in the upper-right corner of the browser screen. A selection of sample gestures are available, as well as an ability to load a newly created gesture stored on the local computer:
 
 ![LabanotationSuite_Gesture_selection.png](docs/LabanotationSuite_Gesture_selection.png)
 
@@ -51,8 +51,12 @@ New gesture files created by the user can be viewed by selecting Import/Upload J
 
 ![LabanotationSuite_Gesture_File_selection.png](docs/LabanotationSuite_Gesture_File_selection.png)
 
-### Show Model Helpers
+### staticElbow
+The fixed elbow joint of the MSRAbot physical robot can be modeled by checking the staticElbow box. 
+**Note:** If the following showHelpers checkbox is also set, the unconstrained humanoid skeletal model may follow different paths than the MSRAbot model.
 
-In the future, different robot models may be made available for rendering gestures.  Until then, viewing skeletal components of the selected robot model is possible by opening the Robot menu, clicking the showHelpers box, and adjusting the opacity of the model surface as desired.
+### showHelpers
 
-![LabanotationSuite_Show_Helpers.png](docs/LabanotationSuite_Show_Helpers.png)
+The skeletal complonents of the humanoid stick figure can be viewed by checking the showHelpers box. In the future, different robot models may be made available for rendering gestures.  Until then, viewing skeletal components of the selected robot model is possible by opening the Robot menu, clicking the showHelpers box, and adjusting the opacity of the model surface as desired.
+
+![LabanotationSuite_Static_Elbow.png](docs/LabanotationSuite_Static_Elbow.png)
