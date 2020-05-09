@@ -52,12 +52,12 @@ New gesture files created by the user can be viewed by selecting Import/Upload J
 ![LabanotationSuite_Gesture_File_selection.png](docs/LabanotationSuite_Gesture_File_selection.png)
 
 ### staticElbow
-The fixed elbow joint of the MSRAbot physical robot can be modeled by checking the staticElbow box. 
+The fixed elbow joint of the MSRAbot physical robot can be modeled or ignored by checking the staticElbow box. This enforces a movement constraint to the model that matches a physical MSRAbot device. A humanoid stick figure model does not have this constraint.
 
 **Note:** If the following showHelpers checkbox is also set, the unconstrained humanoid skeletal model may follow different paths than the MSRAbot model.
 
 ### showHelpers
 
-The skeletal complonents of a humanoid stick figure model can be viewed by checking the showHelpers box and adjusting the opacity of the MSRAbot model.
+The skeletal components of a humanoid stick figure model can be viewed by checking the showHelpers box and adjusting the opacity of the MSRAbot model.
 
 ![LabanotationSuite_Static_Elbow.png](docs/LabanotationSuite_Static_Elbow.png)
