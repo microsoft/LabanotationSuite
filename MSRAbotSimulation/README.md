@@ -43,7 +43,7 @@ Animated gestures are viewed in the browser by selecting and loading JSON files.
 
 Changing the gesture to be viewed is performed by selecting the drop-down text box in the upper-right corner of the browser screen. A selection of sample gestures are available, as well as an ability to load a newly created gesture stored on the local computer.
 
-In addition to the six gestures, the sample files contain examples of the three [keyframe extraction methods available for processing in the **LabanEditor**](https://github.com/microsoft/LabanotationSuite/blob/master/GestureAuthoringTools/LabanEditor/README.md#keyframe-extraction-algorithms) gesture authoring tool included in this suite.
+In addition to the six gestures, the sample files contain examples of the three [keyframe extraction methods ***(naive, total, and parallel)*** available for processing in the **LabanEditor**](https://github.com/microsoft/LabanotationSuite/blob/master/GestureAuthoringTools/LabanEditor/README.md#keyframe-extraction-algorithms) gesture authoring tool included in this suite.
 
 ![LabanotationSuite_Gesture_selection.png](docs/LabanotationSuite_Gesture_selection.png)
 
