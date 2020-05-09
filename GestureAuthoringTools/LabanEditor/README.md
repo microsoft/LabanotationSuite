@@ -61,7 +61,7 @@ $ sudo apt-get install python-tk
 ```
 *   Clone the repository:
 ```
-$ git clone --recursive https://github.com/MORL/LabanotationSuite.git
+$ git clone --recursive https://github.com/microsoft/LabanotationSuite.git
 ```
 
 ## Launch Application
