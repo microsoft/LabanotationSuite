@@ -40,7 +40,7 @@ LabanEditor is a Python script application that loads a Kinect joint .csv file r
 ```
 *   Clone the repository:
 ```
-> git clone --recursive https://github.com/MORL/LabanotationSuite.git
+> git clone --recursive https://github.com/microsoft/LabanotationSuite.git 
 ```
 
 ### Linux
