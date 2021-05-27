@@ -1,4 +1,4 @@
-![MARR_logo.png](/docs/MARR_logo.png)Microsoft Applied Robotics Research Library
+![MARR_logo.png](/docs/img/MARR_logo.png)Microsoft Applied Robotics Research Library
 # [Labanotation Suite](/README.md)
 
 
