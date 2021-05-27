@@ -46,7 +46,7 @@ A ready-to-run file tree that can be added to an HTTP server and viewed by most 
 
 *   **Q** *Who should I contact regarding this repository?*
 
-*   **A** Please create a Github issue or email [robotics@microsoft.com](mailto:robotics@microsoft.com) with any questions or feedback.
+*   **A** Please create a Github issue or email [robosupp@microsoft.com](mailto:robosupp@microsoft.com) with any questions or feedback.
 
 
 *   **Q** *Is this code suitable for non-robotic applications such as documenting dance steps?*
