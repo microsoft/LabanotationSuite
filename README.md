@@ -1,4 +1,4 @@
-![MARR_logo.png](/docs/MARR_logo.png)Microsoft Applied Robotics Research Library
+![MARR_logo.png](/docs/img/MARR_logo.png)Microsoft Applied Robotics Research Library
 # **Labanotation Suite**
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)  
@@ -22,10 +22,10 @@ contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additio
 
 ## Robot Gesture Authoring System Description
 ### System Modules:
- ![LabanSuite_Modules.jpg](/docs/LabanSuite_Modules.jpg)
+ ![LabanSuite_Modules.jpg](/docs/img/LabanSuite_Modules.jpg)
 
 ### System Diagram:
- ![LabanSuite_BlockDiagram.jpg](/docs/LabanSuite_BlockDiagram.jpg)
+ ![LabanSuite_BlockDiagram.jpg](/docs/img/LabanSuite_BlockDiagram.jpg)
 
 ## Gesture Authoring Tools
 ### [KinectReader](GestureAuthoringTools/KinectReader/README.md)
