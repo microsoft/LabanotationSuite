@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="None">
+        
+        
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>Microsoft Applied Robotics Research Library: LabanotationSuite</title>
+        <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+        <script src="../../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../../js/bootstrap-3.0.3.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body class="homepage">
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <div class="container">
+
+                <!-- Collapsed navigation -->
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="../..">Microsoft Applied Robotics Research Library: LabanotationSuite</a>
+                </div>
+
+                <!-- Expanded navigation -->
+                <div class="navbar-collapse collapse">
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#microsoft-applied-robotics-research-library">Microsoft Applied Robotics Research Library</a></li>
+            <li><a href="#open-source-samples-for-service-robotics">Open Source Samples for Service Robotics</a></li>
+        <li class="main "><a href="#kinectcaptureeditor-user-manual">KinectCaptureEditor User Manual</a></li>
+            <li><a href="#introduction">Introduction</a></li>
+            <li><a href="#tested-system-software">Tested System Software</a></li>
+            <li><a href="#installation">Installation</a></li>
+            <li><a href="#example-use">Example Use</a></li>
+            <li><a href="#starting-up-and-loading-files">Starting Up and Loading Files</a></li>
+            <li><a href="#the-user-interface">The User Interface</a></li>
+            <li><a href="#timeline-pane">Timeline Pane</a></li>
+            <li><a href="#timeline-cursors">Timeline Cursors</a></li>
+            <li><a href="#frame-display-pane">Frame Display Pane</a></li>
+            <li><a href="#summary-pane">Summary Pane</a></li>
+            <li><a href="#playback">Playback</a></li>
+            <li><a href="#creating-excerpts">Creating Excerpts</a></li>
+            <li><a href="#reference">Reference</a></li>
+            <li><a href="#keyboard-shortcuts">Keyboard Shortcuts</a></li>
+    </ul>
+</div></div>
+                <div class="col-md-9" role="main">
+
+<h2 id="microsoft-applied-robotics-research-library"><img alt="logo" src="../../img/MARR_logo.png" /> <a href="https://special-giggle-b26bab5f.pages.github.io/">Microsoft Applied Robotics Research Library</a></h2>
+<h3 id="open-source-samples-for-service-robotics">Open Source Samples for Service Robotics</h3>
+<p><a href="https://opensource.org/licenses/MIT"><img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg" /></a> </p>
+<h1 id="kinectcaptureeditor-user-manual"><strong>KinectCaptureEditor User Manual</strong></h1>
+<h2 id="introduction">Introduction</h2>
+<p>The KinectCaptureEditor tool is provided as a Windows binary application that displays skeletal tracking data and/or audio/video captured by the KinectReader tool.  Sections of the captured sessions may be trimmed and saved to create new data files of concise gestures.</p>
+<h2 id="tested-system-software">Tested System Software</h2>
+<ul>
+<li>Microsoft Windows 10, 64-bit</li>
+<li>Microsoft Visual C++ Runtime Library <em>(https://aka.ms/vs/16/release/vc_redist.x64.exe)</em></li>
+</ul>
+<h2 id="installation">Installation</h2>
+<p>Download the KinectCaptureEditor.exe file to a folder on your local machine.</p>
+<h2 id="example-use">Example Use</h2>
+<p>The user wishes to create a set of reference gestures with associated audio and video.  Each individual gesture is to have its own Kinect data and media file.
+- Using the KinectReader tool, the user captures themselves making the series of poses and vocally naming each pose.
+- The captured session is loaded into the KinectCaptureEditor using <strong>File→Load Kinect Data…</strong> and <strong>File→Load Audio/Video File…</strong> or <strong>Ctrl+O</strong> and <strong>Shift+Ctrl+O</strong> keys.
+- The range cursors are positioned to isolate the Kinect data, video, and audio excerpts for the first gesture.
+- The range is played via <strong>File→Play Range</strong> or <strong>F5</strong> key to verify the excerpt.
+- The Kinect data and media files for the first gesture are created using <strong>File→Write Kinect Data…</strong> and <strong>File→Write Audio/Video File…</strong> or <strong>Ctrl+S</strong> and <strong>Shift+Ctrl+S</strong> keys.
+- The range cursors are positioned for the next gesture and the procedure repeated until all individual gesture files have been created.</p>
+<h2 id="starting-up-and-loading-files">Starting Up and Loading Files</h2>
+<ol>
+<li>To begin, double-click <strong>KinectCaptureEditor.exe</strong> to run the application.</li>
+<li>Load the Kinect data by selecting <strong>File→Load Kinect Data…</strong> from the menu bar or pressing <strong>Ctrl+S</strong> to display the open file dialog.  Navigate to the folder containing the Kinect data created by the KinectReader tool, select the file (usually named <strong>“joints.csv”</strong>) and click <strong>Open</strong>.</li>
+<li>Load the corresponding audio/video file by selecting <strong>File→Load Audio/Video File…</strong> or pressing <strong>Shift+Ctrl+S</strong> to display the open file dialog and select the media file corresponding to the Kinect data (usually named <strong>“audiorecording.wav”</strong> or <strong>“videorecording.wmv”</strong>.)</li>
+</ol>
+<p><strong>Note</strong> Loading both skeletal tracking data and audio/video files is not required.  If both are loaded, the Kinect data and media files need not be the same length.  Media files may be any format supported by Windows Media Foundation.</p>
+<h2 id="the-user-interface">The User Interface</h2>
+<p><img alt="KinectCaptureEditor_Fig1.jpg" src="../../img/KinectCaptureEditor_Fig1.jpg" /></p>
+<p>The main application window is divided into three panes.  Drag the gray dividers between the panes to size the panes as desired.</p>
+<h2 id="timeline-pane">Timeline Pane</h2>
+<p>The Timeline Pane at the bottom shows the individual Kinect data frames (snapshots of the Kinect skeletal tracking data) and audio waveform in chronological order.  Note that the Kinect data and media files always start at 0.0 seconds.  Even if they are different durations, the starting time of one or the other currently cannot be changed.
+ <img alt="KinectCaptureEditor_Fig2.jpg" src="../../img/KinectCaptureEditor_Fig2.jpg" /> 
+- The horizontal scale indicates the time in seconds.
+- Each tick at the top indicates a Kinect data frame and a slightly longer, brighter tick indicates every tenth data frame.  As space permits, a data frame tick extends to a thumbnail of that frame.
+- If a media file is loaded and contains audio, the Audio Waveform displays a graphical representation.
+- The yellow, red, and green vertical lines with diamond-shaped handles are cursors, described below in <em>Timeline Cursors</em>.</p>
+<h2 id="timeline-cursors">Timeline Cursors</h2>
+<p>Cursors are the vertical lines with diamond-shaped handles in the Timeline Pane.  The three cursors are:
+- Current Position (yellow)—This cursor indicates the data and video frames shown in the Frame Display Pane and the current position during playback (see Playback, below.)  This cursor is useful for exploring the data without changing the currently selected range.
+- Range Start (green)—The selected range starts at this cursor.  The selected range is used for playback and creating excerpts.  This cursor can’t be dragged beyond the Range End cursor.
+- Range End (red)—The selected range ends at and includes the frames at this cursor.  Dragging this cursor beyond the Range Start cursor moves the Range Start cursor as well.</p>
+<p>The position of the Current Position Cursor and the selected range is shown in the Summary Pane. </p>
+<p>To move a cursor, left click, drag, and release the diamond handle at the bottom.  The Frame Display Pane will show the frame at the cursor’s position and audio (if loaded) will play while the cursor is being dragged.</p>
+<h2 id="frame-display-pane">Frame Display Pane</h2>
+<p>The Frame Display Pane at the upper-left displays a diagram of the Kinect data frame and corresponding video frame if a media file is loaded.
+ <img alt="KinectCaptureEditor_Fig3.jpg" src="../../img/KinectCaptureEditor_Fig3.jpg" />
+- The Data Frame Number is the index of the Kinect data frame where 1 is the first.
+- The Relative Time is the time (from the start of the data and media files) of the Kinect Data Frame and Video Frame shown.
+- The Kinect Sensor Timestamp is the value assigned to the frame by the Kinect sensor when it was captured.
+- The Kinect Data Diagram is the graphical representation of the frame’s Kinect data.
+- The Video Frame is the video at the Relative Time if the loaded media file contains video.
+- The pane usually shows the frame at the Current Position cursor (yellow) but when any cursor is clicked on or dragged, the pane shows the frame for that cursor’s position.  When the cursor is released, the pane returns to displaying frame for the Current Position cursor.
+- <strong>Note:</strong>  When a cursor is dragged, the pane must load the new video frame(s) from the media file and the video frame display may update slowly and lag the cursor.</p>
+<h2 id="summary-pane">Summary Pane</h2>
+<p>The Summary Pane at the upper-right displays a summary of the current session.
+ <img alt="KinectCaptureEditor_Fig4.jpg" src="../../img/KinectCaptureEditor_Fig4.jpg" />
+- The Kinect Data File is the currently loaded file, the number of data frames, and the total data frame series duration in seconds.
+- The Media File is the currently loaded file and the total media duration in seconds.
+- The Selected Range is starting and ending time range in seconds and Kinect data frames as marked by the Range Start (green) and Range End (red) cursors.
+- The Current Position is the time position of the Current Position cursor (yellow) relative to the start of the Kinect data and media files.</p>
+<h2 id="playback">Playback</h2>
+<p>There are two ways to play the currently loaded Kinect data and audio/video:
+- Selecting <strong>Play→Play Range</strong> from the menu bar or pressing the <strong>F5</strong> key will play the data frames and media within the selected range.
+- Selecting <strong>Play→Play All</strong> or pressing <strong>Shift+F5</strong> will play the entire timeline.</p>
+<p>KinectCaptureEditor plays the Kinect data, video, and audio as close to real-time as possible.  The Current Position Cursor indicates the current time during playback and returns to its previous position when playback stops.  Playback stops automatically at the end of the range or timeline and can be manually stopped by selecting <strong>Play→Stop Play</strong> or pressing the <strong>Esc</strong> key.</p>
+<p>If the Kinect data or video track is shorter than the play duration, the Frame Display pane will show the last Kinect data frame and/or video frame.  If the audio track is shorter, audio stops for the remainder of the play duration.</p>
+<h2 id="creating-excerpts">Creating Excerpts</h2>
+<p>To create an excerpt or portion of the loaded Kinect data frames and/or media file:
+1. Set the desired range using the Range Start and Range End cursors.
+1. To create a Kinect data excerpt, select File→Write Kinect Data… or press Ctrl+S to display the save file dialog.  Enter a new name for the Kinect data frames and click Save.
+1. To create a media excerpt, select File→Write Audio/Video File… or press Shift+Ctrl+S to display the save file dialog.  Enter a new name for the media file and click Save.</p>
+<p>Excerpt files can be loaded back into KinectCaptureEditor using the File→Load commands.</p>
+<p>The Range Start and Range End cursors need not be positioned exactly on the starting time of a Kinect data frame.  KinectCaptureEditor will set to duration of the first and last data frames written to the file to match the cursor positions.  Video and audio excerpts are adjusted similarly.</p>
+<p><strong>Note:</strong> Media excerpts are always written using the Windows Media Audio 8/Video 8 codecs at this time.</p>
+<h2 id="reference">Reference</h2>
+<h3 id="menus">Menus</h3>
+<h4 id="file-menu">File Menu</h4>
+<p><img alt="KinectCaptureEditor_Fig5.jpg" src="../../img/KinectCaptureEditor_Fig5.jpg" /></p>
+<table>
+<thead>
+<tr>
+<th>Menu Item</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>New</td>
+<td>Clears currently loaded Kinect data and media tracks</td>
+</tr>
+<tr>
+<td>Load Kinect Data</td>
+<td>Loads Kinect data from a file</td>
+</tr>
+<tr>
+<td>Load Audio/Video File</td>
+<td>Loads a media file</td>
+</tr>
+<tr>
+<td>Write Kinect Data</td>
+<td>Writes the Kinect data in the selected range to a file</td>
+</tr>
+<tr>
+<td>Write Audio/Video File</td>
+<td>Writes the media tracks in the selected range to a file</td>
+</tr>
+</tbody>
+</table>
+<h4 id="play-menu">Play Menu</h4>
+<p><img alt="KinectCaptureEditor_Fig6.jpg" src="../../img/KinectCaptureEditor_Fig6.jpg" /></p>
+<table>
+<thead>
+<tr>
+<th>Menu Item</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Play Range</td>
+<td>Play the selected range indicated by the Range Start and Range End cursors</td>
+</tr>
+<tr>
+<td>Play All</td>
+<td>Play the entire timeline</td>
+</tr>
+<tr>
+<td>Stop Play</td>
+<td>Stop playback</td>
+</tr>
+</tbody>
+</table>
+<h4 id="help-menu">Help Menu</h4>
+<p><img alt="KinectCaptureEditor_Fig7.jpg" src="../../img/KinectCaptureEditor_Fig7.jpg" /> 
+|Menu Item|Description|
+|--|--|
+|About…|Display the About dialog box|</p>
+<h2 id="keyboard-shortcuts">Keyboard Shortcuts</h2>
+<table>
+<thead>
+<tr>
+<th>Keys</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ctrl+O</td>
+<td>Open a Kinect data file</td>
+</tr>
+<tr>
+<td>Shift+Ctrl+O</td>
+<td>Open a media file</td>
+</tr>
+<tr>
+<td>F5</td>
+<td>Play the selected range</td>
+</tr>
+<tr>
+<td>Shift+F5</td>
+<td>Play the entire timeline</td>
+</tr>
+<tr>
+<td>Esc</td>
+<td>Stop playing</td>
+</tr>
+<tr>
+<td>Ctrl+S</td>
+<td>Write range to a Kinect data file</td>
+</tr>
+<tr>
+<td>Shift+Ctrl+S</td>
+<td>Write range to a media file</td>
+</tr>
+<tr>
+<td>Alt+F4</td>
+<td>Exit the application</td>
+</tr>
+</tbody>
+</table></div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "../..",
+                shortcuts = {"search": 83, "next": 78, "help": 191, "previous": 80};
+        </script>
+        <script src="../../js/base.js" defer></script>
+        <script src="../../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form role="form">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="Keyboard Shortcuts Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Keyboard Shortcuts</h4>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
+
+<!--
+MkDocs version : 1.0.4
+Build Date UTC : 2021-05-27 06:51:28
+-->

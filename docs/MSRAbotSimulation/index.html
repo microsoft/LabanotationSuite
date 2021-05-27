@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="None">
+        
+        
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>Microsoft Applied Robotics Research Library: LabanotationSuite</title>
+        <link href="../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+        <script src="../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../js/bootstrap-3.0.3.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body class="homepage">
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <div class="container">
+
+                <!-- Collapsed navigation -->
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="..">Microsoft Applied Robotics Research Library: LabanotationSuite</a>
+                </div>
+
+                <!-- Expanded navigation -->
+                <div class="navbar-collapse collapse">
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#microsoft-applied-robotics-research-library">Microsoft Applied Robotics Research Library</a></li>
+            <li><a href="#open-source-samples-for-service-robotics">Open Source Samples for Service Robotics</a></li>
+        <li class="main "><a href="#msrabot-simulation-software">MSRAbot Simulation Software</a></li>
+            <li><a href="#description">Description</a></li>
+            <li><a href="#tested-system-software">Tested System Software</a></li>
+            <li><a href="#installation">Installation</a></li>
+            <li><a href="#starting-up">Starting Up</a></li>
+            <li><a href="#viewing-gestures">Viewing Gestures</a></li>
+    </ul>
+</div></div>
+                <div class="col-md-9" role="main">
+
+<h2 id="microsoft-applied-robotics-research-library"><img alt="logo" src="../img/MARR_logo.png" /> <a href="https://special-giggle-b26bab5f.pages.github.io/">Microsoft Applied Robotics Research Library</a></h2>
+<h3 id="open-source-samples-for-service-robotics">Open Source Samples for Service Robotics</h3>
+<p><a href="https://opensource.org/licenses/MIT"><img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg" /></a> </p>
+<h1 id="msrabot-simulation-software"><strong>MSRAbot Simulation Software</strong></h1>
+<h2 id="description">Description</h2>
+<p>The MSRAbot Simulation Software uses javascript and html code to implement an animated 3D model of the robot and a user interface for selecting and rendering gestures described in the JSON format. A temporary local HTTP server invoked with python or an existing server can be used to host the software and the simulation is run within a modern web browser. The user can choose from a collection of sample gestures, or select a new gesture captured and created using this project's Gesture Authoring Tools.</p>
+<h2 id="tested-system-software">Tested System Software</h2>
+<ul>
+<li>Microsoft Windows 10, 64-bit</li>
+<li>Microsoft Edge Web Browser <em>(https://www.microsoft.com/en-us/edge/)</em></li>
+<li>Python 2.7.10 <em>(https://www.python.org/downloads/release/python-2710/)</em></li>
+</ul>
+<h2 id="installation">Installation</h2>
+<p>Copy the entire <strong>MSRAbotSimulation</strong> folder into a convenient folder on your local computer.</p>
+<p><strong>Note:</strong> If you are already running or have access to an HTTP server, you can copy this folder into that server's file tree.</p>
+<h2 id="starting-up">Starting Up</h2>
+<ol>
+<li>Open a command prompt or terminal session with access to your python installation</li>
+<li>Navigate to the MSRAbotSimulation folder containing the file index.html</li>
+<li>Run the following command (for python 2.3):</li>
+</ol>
+<pre><code>&gt; python -m SimpleHTTPServer
+</code></pre>
+
+<p><strong>Note:</strong> If you are running python version 3 or higher, run this command:</p>
+<pre><code>&gt; python3 -m http.server
+</code></pre>
+
+<ol>
+<li>Open your favorite browser and open the URL http://localhost:8000</li>
+</ol>
+<p><strong>Note:</strong> If you have installed the folder into an existing HTTP server, you do not need to run the previous python commands but will need to adjust the URL for that particular server.  <strong>For example:</strong> <em>http://[your_server_name/your_installation_path]/MSRAbotSimulation/index.html</em></p>
+<h2 id="viewing-gestures">Viewing Gestures</h2>
+<p>Animated gestures are viewed in the browser by selecting and loading JSON files. View angle, panning, and zoom are available by clicking and holding mouse buttons and scroll wheels within the scene. Animation speed can be adjusted with a slider bar in the upper-right control panel.</p>
+<p><img alt="LabanotationSuite_MSRAbot_in_browser.png" src="../img/LabanotationSuite_MSRAbot_in_browser.png" /></p>
+<h3 id="select-a-gesture">Select a Gesture</h3>
+<p>Changing the gesture to be viewed is performed by selecting the drop-down text box in the upper-right corner of the browser screen. A selection of sample gestures are available, as well as an ability to load a newly created gesture stored on the local computer.</p>
+<p>In addition to the six gestures, the sample files contain examples of the three <a href="https://github.com/microsoft/LabanotationSuite/blob/master/GestureAuthoringTools/LabanEditor/README.md#keyframe-extraction-algorithms">keyframe extraction methods <strong><em>(naive, total, and parallel)</em></strong> available for processing in the <strong>LabanEditor</strong></a> gesture authoring tool included in this suite.</p>
+<p><img alt="LabanotationSuite_Gesture_selection.png" src="../img/LabanotationSuite_Gesture_selection.png" /></p>
+<h3 id="select-a-local-gesture-file">Select a Local Gesture File</h3>
+<p>New gesture files created by the user can be viewed by selecting Import/Upload JSON File in the drop-down text box and then navigating to the file on the local computer:</p>
+<p><img alt="LabanotationSuite_Gesture_File_selection.png" src="../img/LabanotationSuite_Gesture_File_selection.png" /></p>
+<h3 id="staticelbow">staticElbow</h3>
+<p>The fixed elbow joint of the MSRAbot physical robot can be modeled or ignored by checking the staticElbow box. This enforces a movement constraint to the model that matches a physical MSRAbot device. A humanoid stick figure model does not have this constraint.</p>
+<p><strong>Note:</strong> If the following showHelpers checkbox is also set, the unconstrained humanoid skeletal model may follow different paths than the MSRAbot model.</p>
+<h3 id="showhelpers">showHelpers</h3>
+<p>The skeletal components of a humanoid stick figure model can be viewed by checking the showHelpers box and adjusting the opacity of the MSRAbot model.</p>
+<p><img alt="LabanotationSuite_Static_Elbow.png" src="../img/LabanotationSuite_Static_Elbow.png" /></p></div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "..",
+                shortcuts = {"search": 83, "next": 78, "help": 191, "previous": 80};
+        </script>
+        <script src="../js/base.js" defer></script>
+        <script src="../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form role="form">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="Keyboard Shortcuts Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Keyboard Shortcuts</h4>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
+
+<!--
+MkDocs version : 1.0.4
+Build Date UTC : 2021-05-27 06:51:28
+-->

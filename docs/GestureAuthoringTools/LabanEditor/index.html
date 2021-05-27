@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="None">
+        
+        
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>Microsoft Applied Robotics Research Library: LabanotationSuite</title>
+        <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+        <script src="../../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../../js/bootstrap-3.0.3.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body class="homepage">
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <div class="container">
+
+                <!-- Collapsed navigation -->
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="../..">Microsoft Applied Robotics Research Library: LabanotationSuite</a>
+                </div>
+
+                <!-- Expanded navigation -->
+                <div class="navbar-collapse collapse">
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#microsoft-applied-robotics-research-library">Microsoft Applied Robotics Research Library</a></li>
+            <li><a href="#open-source-samples-for-service-robotics">Open Source Samples for Service Robotics</a></li>
+        <li class="main "><a href="#labaneditor-user-manual">LabanEditor User Manual</a></li>
+            <li><a href="#introduction">Introduction</a></li>
+            <li><a href="#tested-system-software">Tested System Software</a></li>
+            <li><a href="#installation">Installation</a></li>
+            <li><a href="#launch-application">Launch Application</a></li>
+            <li><a href="#the-user-interface">The User Interface</a></li>
+    </ul>
+</div></div>
+                <div class="col-md-9" role="main">
+
+<h2 id="microsoft-applied-robotics-research-library"><img alt="logo" src="../../img/MARR_logo.png" /> <a href="https://special-giggle-b26bab5f.pages.github.io/">Microsoft Applied Robotics Research Library</a></h2>
+<h3 id="open-source-samples-for-service-robotics">Open Source Samples for Service Robotics</h3>
+<p><a href="https://opensource.org/licenses/MIT"><img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg" /></a> </p>
+<h1 id="labaneditor-user-manual"><strong>LabanEditor User Manual</strong></h1>
+<h2 id="introduction">Introduction</h2>
+<p>LabanEditor is a Python script application that loads a Kinect joint .csv file representing a human gesture, provides algorithmic options for automatically extracting keyframes from the gesture that correspond Labanotation data, and provides a graphical user interface for selection and modification of the extracted keyframes. Additionally, it saves the resulting gesture data in a .json file format suitable for controlling robots running a gesture interpretation driver, as well as .png graphic file renderings of the charts and diagrams presented in the user interface.</p>
+<h2 id="tested-system-software">Tested System Software</h2>
+<ul>
+<li>Windows (Version 10, 64-bit) <strong>or</strong> Linux (Ubuntu18.04, 64-bit)</li>
+<li>Git 2.20.1</li>
+<li>Python 2.7.10 <em>(https://www.python.org/downloads/release/python-2710/)</em></li>
+<li>OpenCV 4.1.0 <em>(https://sourceforge.net/projects/opencvlibrary/files/4.1.0/)</em></li>
+<li>MatPlotLib 2.2.4 <em>(https://matplotlib.org/users/installing.html)</em></li>
+<li>NumPy 1.16.3 <em>(https://github.com/numpy/numpy/releases/tag/v1.16.3)</em></li>
+<li>Tkinter 81008 <em>(https://docs.python.org/3/library/tkinter.html)</em></li>
+</ul>
+<h2 id="installation">Installation</h2>
+<h3 id="windows">Windows</h3>
+<h4 id="from-a-cmdexe-or-other-terminal-shell">From a cmd.exe or other terminal shell:</h4>
+<ul>
+<li>Create a folder for the installation in any convenient location and make it the current directory:</li>
+</ul>
+<pre><code>&gt;mkdir (your desired folder name)
+&gt;cd (your desired folder path)
+</code></pre>
+
+<ul>
+<li>
+<p>Download and run the Python installer from this <a href="https://www.python.org/ftp/python/2.7.10/python-2.7.10.amd64.msi">link</a></p>
+</li>
+<li>
+<p>Download and run the ActiveTcl library (Tkinter) installer from this <a href="https://platform.activestate.com/activestate/activetcl-8.6/auto-fork?utm_source=activestate.com&amp;utm_medium=referral&amp;utm_content=activetcl-8.6&amp;utm_campaign=user-acquisition">link</a></p>
+</li>
+<li>
+<p>Download the Pip installer to your installation folder from this <a href="https://bootstrap.pypa.io/get-pip.py">link</a></p>
+</li>
+<li>
+<p>Run these commands:</p>
+</li>
+</ul>
+<pre><code>&gt; python get-pip.py
+&gt; python -m pip install numpy
+&gt; python -m pip install matplotlib
+&gt; python -m pip install opencv-python
+</code></pre>
+
+<ul>
+<li>Clone the repository:</li>
+</ul>
+<pre><code>&gt; git clone --recursive https://github.com/MORL/LabanotationSuite.git
+</code></pre>
+
+<h3 id="linux">Linux</h3>
+<h4 id="from-a-bash-or-other-terminal-shell">From a bash or other terminal shell:</h4>
+<ul>
+<li>Create a folder for the installation in any convenient location and make it the current directory:</li>
+</ul>
+<pre><code>$ mkdir (your desired folder name)
+$ cd (your desired folder path)
+</code></pre>
+
+<ul>
+<li>Run these commands:</li>
+</ul>
+<pre><code>$ sudo apt-get update
+$ sudo apt install python-pip
+$ python -m pip install numpy
+$ python -m pip install matplotlib
+$ python -m pip install opencv-python
+$ sudo apt-get install python-tk
+</code></pre>
+
+<ul>
+<li>Clone the repository:</li>
+</ul>
+<pre><code>$ git clone --recursive https://github.com/microsoft/LabanotationSuite.git
+</code></pre>
+
+<h2 id="launch-application">Launch Application</h2>
+<h3 id="windows_1">Windows</h3>
+<h4 id="from-a-cmdexe-or-other-terminal">From a cmd.exe or other terminal:</h4>
+<p>Move to and then run the example batch file in the top level of the LabanEditor folder:</p>
+<pre><code>&gt;cd LabanotationSuite\GestureAuthoringTools\LabanEditor
+&gt;run_main.bat
+</code></pre>
+
+<p>The example batch file is provided for convenience and contains command line arguments to load the "Total" algorithm and the gesture file "Ges01_wavehand.csv" when the application launches.</p>
+<p>Alternatively, you can run a command directly such as:</p>
+<pre><code>&gt;python src\main.py --alg total --inputfile Ges01_wavehand.csv
+</code></pre>
+
+<p>The application's four windows will appear on your screen.</p>
+<p><strong>Note!</strong> If a Windows security warning appears preventing program execution, select "more info", and then select "run anyway".</p>
+<h3 id="linux_1">Linux</h3>
+<h4 id="from-a-bash-or-other-terminal-shell_1">From a bash or other terminal shell:</h4>
+<p>Move to the src folder and then run a python command to run the file "main.py". The following example includes arguments to load the "Total" algorithm and the gesture file "Ges01_wavehand.csv" when the application launches:</p>
+<pre><code>$ cd LabanotationSuite/GestureAuthoringTools/LabanEditor/src
+$ python main.py --alg total --inputfile Ges01_wavehand.csv
+</code></pre>
+
+<h3 id="launch-time-arguments">Launch-time arguments:</h3>
+<pre><code>main.py [--alg]algorithm [--inputfile][path][filename] [--outputfile][path] [--nogui]
+
+    --alg           &quot;total&quot;, &quot;parallel&quot; or &quot;naive&quot; processing algorithm used to extract keyframes;
+                    if not specified, &quot;total&quot; is used
+
+    --inputfile     Required. Path and filename of .csv joint data file
+
+    --outputfolder  Destination folder for processed labanotation files in .json format;
+                    Destination folder for output .txt and .png graphic files; if not specified,
+                    output folder is .\\data_output
+
+    --nogui         For batch use; processes .csv joint file and extracts keyframes using
+                    specified algorithm but does not launch interactive GUI; extracts keyframes
+                    using specified algorithm
+</code></pre>
+
+<h2 id="the-user-interface">The User Interface</h2>
+<h3 id="gesture-analysis-configuration-screen">Gesture Analysis Configuration Screen</h3>
+<p>This screen provides a user interface for:
+*   Selecting a .csv input file for analysis
+*   Selecting the algorithm used to extract keyframes from the .csv file
+*   Generating .json and .txt gesture output files resulting from the application of the Gaussian Filter
+*   Generating screen-grab graphic files of the application screens 
+*   Adjusting the Window Size and Sigma values for the Gaussian Filter and viewing a graph of its curve
+*   Viewing the most recent lines of the application's Console Log</p>
+<p><img alt="LabanEditor_GestureAnalysisConfiguration-Total.png" src="../../img/LabanEditor_GestureAnalysisConfiguration-Total.png" /></p>
+<h4 id="keyframe-extraction-algorithms">KeyFrame Extraction Algorithms</h4>
+<p><strong><em>Note:  Pre-Extraction Keyframe Extrapolation:</em></strong> 
+Before keyframes are extracted, the application first performs a linear 3D interpolation to fill any missing samples in the original gesture .csv file. This interpolation process provides a first pass towards smoothing the movement of the gesture, but may generate imprecise results with some complicated gestures. The utility of this application is partly to allow a human user to review the gesture movement data and edit it if necessary.  Alternatively, the --nogui launch-time argument allows this application to be used in a batch file to speed the processing of a large set of gestures. </p>
+<ul>
+<li>
+<p>The <strong>Total</strong> energy algorithm extracts keyframes by calculating the total energy across all of the skeleton joints at each time sample and places the keyframes at signal peaks.</p>
+</li>
+<li>
+<p>The <strong>Parallel</strong> energy algorithm extracts keyframes by calculating the energy of each skeleton joint independently and in parallel at each time sample, averages the values and places the keyframes at signal valleys.</p>
+</li>
+<li>
+<p>The <strong>Naive (no-filter)</strong> algorithm does not apply an extraction algorithm and places a keyframe at each time sample.</p>
+</li>
+</ul>
+<h4 id="output-files">Output Files</h4>
+<p>Clicking on the buttons in the Output Files area will create files in the folder \data_output, unless another output folder was specified with a launch-time argument. The top two buttons will create data files containing containing labanotation keyframes in .json or .txt formats. The remaining buttons will create screen-grab graphic files of the three data views, as well as the full labanotation score in the .png format.</p>
+<h4 id="gaussian-filter-graph-and-controls">Gaussian Filter Graph and Controls</h4>
+<p>The graph shows the bell-curve of the Gaussian Filter with the selected sample window size and selected sigma value. The filter parameters can be adjusted by selecting new values on the bars under the graph and clicking the Apply button. The red vertical lines on the parameter selection bars indicate the default values applied when the application starts. Clicking the Reset button or changing between the total or parallel algorithms will return the filter parameters to the default values.</p>
+<h4 id="console-log">Console Log</h4>
+<p>The last three lines written to the terminal window that launched the application are visible in the Console Log.  The entire application log for the session can be viewed in the terminal window itself.</p>
+<h3 id="filter-graph-viewer-and-keyframe-editor">Filter Graph Viewer and KeyFrame Editor</h3>
+<p>When using the Total or Parrallel keyframe extraction algorithms, this screen shows the graph of measured energy over time, as well as the position of the extracted keyframes.</p>
+<h4 id="total-energy-algorithm-filter-graph-screen">Total Energy Algorithm Filter Graph Screen</h4>
+<p><img alt="LabanEditor_FilterGraph-KeyFrameEditor-Total.png" src="../../img/LabanEditor_FilterGraph-KeyFrameEditor-Total.png" /></p>
+<h4 id="parallel-energy-algorithm-filter-graph-screen">Parallel Energy Algorithm Filter Graph Screen</h4>
+<p><img alt="LabanEditor_FilterGraph-KeyFrameEditor-Parallel.png" src="../../img/LabanEditor_FilterGraph-KeyFrameEditor-Parallel.png" /></p>
+<h4 id="keyframe-editing">KeyFrame Editing</h4>
+<p>The keyframe positions appear as green stars <img alt="LabanEditor_FilterGraph-KeyFrameStar.png" src="../../img/LabanEditor_FilterGraph-KeyFrameStar.png" /> and can be manually edited with a mouse:
+*   Right-click and drag on a key frame star to <strong>MOVE</strong> it along the graph line
+*   Right-click on the graph line to <strong>CREATE</strong> a new keyframe star
+*   Double-right-click on a keyframe star to <strong>DELETE</strong> it</p>
+<h4 id="naive-no-filter-filter-graph-screen">Naive (no-filter) Filter Graph Screen</h4>
+<p>When using the Naive method to extract keyframes, there is no calculated energy curve to be represented. The color of the vertical bars simply indicate which keyframes along the gesture sample represent the originally captured joint position data and which frames were interpolated to fill any gaps in the sample set. </p>
+<p><img alt="LabanEditor_FilterGraph-KeyFrameEditor-Naive.png" src="../../img/LabanEditor_FilterGraph-KeyFrameEditor-Naive.png" /></p>
+<h3 id="3d-joint-data-and-time-line-viewer">3D Joint Data and Time-line Viewer</h3>
+<p>This screen shows 3D skeletons representing joint positions of a gesture over time in both the original input .csv file and what will be written to the output labanotation files.  The top horizontal bar shows the original data from the .csv file with measured frames in blue and any interpolated frames in red. The middle horizontal bar shows the extracted keyframe positions as green vertical lines that can be written out as .json or .txt files. The bottom horizontal bar indicates time and the current position within the gesture, as well as provides the ability to animate the gesture by dragging the mouse across the bar.</p>
+<p><img alt="LabanEditor_3DJointData-Total.png" src="../../img/LabanEditor_3DJointData-Total.png" /></p>
+<h3 id="labanotation-score-viewer">Labanotation Score Viewer</h3>
+<p>This screen shows the gesture output in the .json file presented as a human-readable labanotation score.</p>
+<p><img alt="LabanEditor_LabanotationScore.png" src="../../img/LabanEditor_LabanotationScore.png" /></p></div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "../..",
+                shortcuts = {"search": 83, "next": 78, "help": 191, "previous": 80};
+        </script>
+        <script src="../../js/base.js" defer></script>
+        <script src="../../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form role="form">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="Keyboard Shortcuts Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Keyboard Shortcuts</h4>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
+
+<!--
+MkDocs version : 1.0.4
+Build Date UTC : 2021-05-27 06:51:28
+-->

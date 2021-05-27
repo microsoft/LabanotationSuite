@@ -1,1 +1,0 @@
-Documentation folder for LabanSuite
