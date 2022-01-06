@@ -298,7 +298,7 @@ def kmeans(frame_cnt, data, dist):
     cnt = esti_cnt(frame_cnt, data, dist)
     maxi = 0
     while maxi < dist:
-        print 'count of clusters: '+ str(cnt)
+        print ('count of clusters: '+ str(cnt))
         km = KMeans(n_clusters=cnt).fit(data.reshape(-1,1))
         maxi = max_dist(data,km)
         
@@ -306,12 +306,12 @@ def kmeans(frame_cnt, data, dist):
         center.sort(axis=0)
         center=center.reshape(-1)
         diff = [center[i]-center[i-1] for i in range(1,len(center))]
-        print 'minimum distance between two centers: ' + str(min(diff))
+        print ('minimum distance between two centers: ' + str(min(diff)))
         
-        print 'maximum distance between peaks and its\' center: ' + str(maxi)
+        print ('maximum distance between peaks and its\' center: ' + str(maxi))
         cnt -= 1
     km = KMeans(n_clusters=cnt+2).fit(data.reshape(-1,1))
-    print  '\nmax distance:' + str(max_dist(data,km))
+    print  ('\nmax distance:' + str(max_dist(data,km)))
 
     return km.cluster_centers_
 
@@ -386,11 +386,11 @@ if __name__ == '__main__' :
         a = km.cluster_centers_
         a.sort(axis=0)
         b = [a[i+1]-a[i] for i in range(len(a)-1)]
-        print min(b)
+        print (min(b))
         if min(b) < 24:
             cnt -= 1
         else:
-            print cnt
+            print (cnt)
             break
     for i in range(len(a)):
         pl.plot([a[i],a[i]],[-180,180],'--', linewidth = 3)

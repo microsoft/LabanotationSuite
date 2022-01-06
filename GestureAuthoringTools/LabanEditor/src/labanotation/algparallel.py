@@ -23,18 +23,23 @@ from matplotlib.backend_bases import MouseEvent
 import matplotlib.patches as patches
 import matplotlib.ticker as ticker
 
-import tkMessageBox
+try:
+    from tkinter import messagebox
+except ImportError:
+    # Python 2
+    import tkMessageBox as messagebox
 
 sys.path.append(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'tool'))
 sys.path.append(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'laban_tool'))
 
 import settings
 
-import labanProcessor as lp
+from . import labanProcessor as lp
 
-import tool.accessory as ac
-import tool.wavfilter as wf
-import tool.cluster as cl
+from tool import accessory as ac
+from tool import wavfilter as wf
+from tool import cluster as cl
+
 
 class Algorithm:
     algorithm = None

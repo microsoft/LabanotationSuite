@@ -12,7 +12,12 @@ import numpy as np
 
 import matplotlib.pyplot as plt
 
-import tkMessageBox
+#import tkMessageBox
+try:
+    from tkinter import messagebox
+except ImportError:
+    # Python 2
+    import tkMessageBox as messagebox
 
 import settings
 
@@ -207,14 +212,14 @@ class application:
         _main_path = os.path.abspath(main_path).split(os.path.sep)
         _sub_path = os.path.abspath(sub_path).split(os.path.sep)
         eq_until_pos = None
-        for i in xrange(min(len(_main_path), len(_sub_path))):
+        for i in range(min(len(_main_path), len(_sub_path))):
             if _main_path[i] == _sub_path[i]:
                 eq_until_pos = i
             else:
                 break
         if eq_until_pos is None:
             return sub_path
-        newpath = [".." for i in xrange(len(_main_path[eq_until_pos+1:]))]
+        newpath = [".." for i in range(len(_main_path[eq_until_pos+1:]))]
         newpath.extend(_sub_path[eq_until_pos+1:])
         return os.path.join(*newpath) if newpath else "."
 
@@ -347,7 +352,7 @@ class application:
                 forceReset = True
             else:
                 self.logMessage("Error: The file '" + str(file) + "' is not a valid file.")
-                tkMessageBox.showerror("Labanotation", "The file '" + str(file) + "' is not a valid file.", parent=settings.tkGuiCanvas)
+                messageBox.showerror("Labanotation", "The file '" + str(file) + "' is not a valid file.", parent=settings.tkGuiCanvas)
                 return
 
         # load Kinect capture data

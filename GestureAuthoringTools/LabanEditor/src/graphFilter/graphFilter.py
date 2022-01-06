@@ -16,7 +16,11 @@ from matplotlib.widgets import Slider, Cursor, Button, RadioButtons
 from mpl_toolkits.axes_grid1.inset_locator import InsetPosition
 import matplotlib.patches as patches
 
-import tkMessageBox
+try:
+    from tkinter import messagebox
+except ImportError:
+    # Python 2
+    import tkMessageBox as messagebox
 
 import settings
 

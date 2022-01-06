@@ -8,12 +8,16 @@ import json
 
 import numpy as np
 from collections import OrderedDict
-import labanProcessor as lp
+from . import labanProcessor as lp
 
 import matplotlib.patches as patches
 from matplotlib.patches import Patch
 
-import tkMessageBox
+try:
+    from tkinter import messagebox
+except ImportError:
+    # Python 2
+    import tkMessageBox as messagebox
 
 import settings
 

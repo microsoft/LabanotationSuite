@@ -5,11 +5,11 @@
 
 import settings
 
-import algnaive
-import algtotal
-import algparallel
-import labanProcessor
-import labanVisualization
+from . import algnaive
+from . import algtotal
+from . import algparallel
+from . import labanProcessor
+from . import labanVisualization
 
 class labanotation:
     all_laban = []
@@ -23,7 +23,7 @@ class labanotation:
     # Class initialization
     #
     def __init__(self):
-        print 'Initializing Labanotation...'
+        print ('Initializing Labanotation...')
 
     #------------------------------------------------------------------------------
     # convert joint data frames to labanotation using specified algorithm

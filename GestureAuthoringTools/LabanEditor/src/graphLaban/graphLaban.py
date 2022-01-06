@@ -12,12 +12,16 @@ from matplotlib.widgets import Slider, Button, RadioButtons
 import matplotlib.cm as cm
 import matplotlib.patches as patches
 
-import tkMessageBox
+try:
+    from tkinter import messagebox
+except ImportError:
+    # Python 2
+    import tkMessageBox as messagebox
 
 import cv2
 
 import settings
-import scrollbar
+from . import scrollbar
 
 class graphLaban:
     fig = None
