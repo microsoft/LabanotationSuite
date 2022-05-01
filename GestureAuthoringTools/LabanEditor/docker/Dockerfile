@@ -24,6 +24,6 @@ RUN source activate labansuite \
 RUN git clone --recursive https://github.com/microsoft/LabanotationSuite.git
 WORKDIR /LabanotationSuite/GestureAuthoringTools/LabanEditor/src
  
-COPY ./main.py /LabanotationSuite/GestureAuthoringTools/LabanEditor/src/main.py
+# COPY ./main.py /LabanotationSuite/GestureAuthoringTools/LabanEditor/src/main.py
 # COPY ./graphLaban.py /LabanotationSuite/GestureAuthoringTools/LabanEditor/src/graphLaban/graphLaban.py
 CMD ["bash"]
