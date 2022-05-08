@@ -52,7 +52,8 @@ class Algorithm:
     #------------------------------------------------------------------------------
     # convert joint data frames to labanotation
     #
-    def convertToLabanotation(self, ax, jointD, forceReset):
+    def convertToLabanotation(self, ax, jointD, forceReset,
+                              base_rotation_style='every'):
         if (forceReset):
             self.reset()
 
@@ -73,13 +74,22 @@ class Algorithm:
         for i in range(0, cnt):
             timeS[i] = jointD[i]['timeS'][0]
 
+        base_rotation = None
+        if base_rotation_style == 'first':
+            base_rotation = lp.calculate_base_rotation(
+                self.jointFrames[0])
+
         elR = np.zeros((cnt, 3))
         elL = np.zeros((cnt, 3))
         wrR = np.zeros((cnt, 3))
         wrL = np.zeros((cnt, 3))
     
         for i in range(0, cnt):
-            (elR[i], elL[i], wrR[i], wrL[i]) = lp.raw2sphere(jointD[i])
+            if base_rotation_style == 'every':
+                base_rotation = lp.calculate_base_rotation(self.jointFrames[i])
+            (elR[i], elL[i], wrR[i], wrL[i]) = lp.raw2sphere(
+                jointD[i],
+                base_rotation=base_rotation)
 
         # [right upper/elbow, right lower/wrist, left upper/elbow, left lower/wrist]
         # use coordinate2laban to generate labanotation for all frames
