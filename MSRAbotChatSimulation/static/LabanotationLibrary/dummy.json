@@ -1,0 +1,292 @@
+{
+    "dummy": {
+        "Position0": {
+            "start time": [
+                "1"
+            ], 
+            "duration": [
+                "2"
+            ], 
+            "head": [
+                "Forward", 
+                "Normal"
+            ], 
+            "right elbow": [
+                "Place", 
+                "Low"
+            ], 
+            "right wrist": [
+                "Place", 
+                "Low"
+            ], 
+            "left elbow": [
+                "Place", 
+                "Low"
+            ], 
+            "left wrist": [
+                "Place", 
+                "Low"
+            ], 
+            "rotation": [
+                "ToRight", 
+                "0.0378457"
+            ]
+        }, 
+        "Position1": {
+            "start time": [
+                "500"
+            ], 
+            "duration": [
+                "9"
+            ], 
+            "head": [
+                "Forward", 
+                "Normal"
+            ], 
+            "right elbow": [
+                "Right", 
+                "Normal"
+            ], 
+            "right wrist": [
+                "Right", 
+                "Normal"
+            ], 
+            "left elbow": [
+                "Left", 
+                "Normal"
+            ], 
+            "left wrist": [
+                "Left", 
+                "Normal"
+            ], 
+            "rotation": [
+                "ToRight", 
+                "1.83873"
+            ]
+        }, 
+        "Position2": {
+            "start time": [
+                "2500"
+            ], 
+            "duration": [
+                "9"
+            ], 
+            "head": [
+                "Forward", 
+                "Normal"
+            ], 
+            "right elbow": [
+                "Right", 
+                "Normal"
+            ], 
+            "right wrist": [
+                "Right", 
+                "Normal"
+            ], 
+            "left elbow": [
+                "Left", 
+                "Normal"
+            ], 
+            "left wrist": [
+                "Left", 
+                "Normal"
+            ], 
+            "rotation": [
+                "ToRight", 
+                "1.83873"
+            ]
+        }, 
+        "Position3": {
+            "start time": [
+                "4500"
+            ], 
+            "duration": [
+                "3"
+            ], 
+            "head": [
+                "Forward", 
+                "Normal"
+            ], 
+            "right elbow": [
+                "Forward", 
+                "Normal"
+            ], 
+            "right wrist": [
+                "Forward", 
+                "Normal"
+            ], 
+            "left elbow": [
+                "Forward", 
+                "Normal"
+            ], 
+            "left wrist": [
+                "Forward", 
+                "Normal"
+            ], 
+            "rotation": [
+                "ToRight", 
+                "1.91766"
+            ]
+        }, 
+        "Position4": {
+            "start time": [
+                "5500"
+            ], 
+            "duration": [
+                "3"
+            ], 
+            "head": [
+                "Forward", 
+                "Normal"
+            ], 
+            "right elbow": [
+                "Forward", 
+                "Normal"
+            ], 
+            "right wrist": [
+                "Forward", 
+                "Normal"
+            ], 
+            "left elbow": [
+                "Forward", 
+                "Normal"
+            ], 
+            "left wrist": [
+                "Forward", 
+                "Normal"
+            ], 
+            "rotation": [
+                "ToRight", 
+                "1.91766"
+            ]
+        }, 
+        "Position5": {
+            "start time": [
+                "7500"
+            ], 
+            "duration": [
+                "2"
+            ], 
+            "head": [
+                "Forward", 
+                "Normal"
+            ], 
+            "right elbow": [
+                "Right", 
+                "Normal"
+            ], 
+            "right wrist": [
+                "Right", 
+                "Normal"
+            ], 
+            "left elbow": [
+                "Left", 
+                "Normal"
+            ], 
+            "left wrist": [
+                "Left", 
+                "Normal"
+            ], 
+            "rotation": [
+                "ToRight", 
+                "0.0456474"
+            ]
+        }, 
+        "Position6": {
+            "start time": [
+                "8500"
+            ], 
+            "duration": [
+                "2"
+            ], 
+            "head": [
+                "Forward", 
+                "Normal"
+            ], 
+            "right elbow": [
+                "Right", 
+                "Normal"
+            ], 
+            "right wrist": [
+                "Right", 
+                "Normal"
+            ], 
+            "left elbow": [
+                "Left", 
+                "Normal"
+            ], 
+            "left wrist": [
+                "Left", 
+                "Normal"
+            ], 
+            "rotation": [
+                "ToRight", 
+                "0.0456474"
+            ]
+        }, 
+        "Position7": {
+            "start time": [
+                "10500"
+            ], 
+            "duration": [
+                "2"
+            ], 
+            "head": [
+                "Forward", 
+                "Normal"
+            ], 
+            "right elbow": [
+                "Place", 
+                "Low"
+            ], 
+            "right wrist": [
+                "Place", 
+                "Low"
+            ], 
+            "left elbow": [
+                "Place", 
+                "Low"
+            ], 
+            "left wrist": [
+                "Place", 
+                "Low"
+            ], 
+            "rotation": [
+                "ToRight", 
+                "0.644721"
+            ]
+        }, 
+        "Position8": {
+            "start time": [
+                "11500"
+            ], 
+            "duration": [
+                "-1"
+            ], 
+            "head": [
+                "Forward", 
+                "Normal"
+            ], 
+            "right elbow": [
+                "Place", 
+                "Low"
+            ], 
+            "right wrist": [
+                "Place", 
+                "Low"
+            ], 
+            "left elbow": [
+                "Place", 
+                "Low"
+            ], 
+            "left wrist": [
+                "Place", 
+                "Low"
+            ], 
+            "rotation": [
+                "ToRight", 
+                "0.644721"
+            ]
+        }
+    }
+}

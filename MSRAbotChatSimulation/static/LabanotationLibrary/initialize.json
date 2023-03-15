@@ -1,0 +1,100 @@
+{
+    "initialize": {
+        "Position0": {
+            "start time": [
+                "1"
+            ], 
+            "duration": [
+                "0"
+            ], 
+            "head": [
+                "Forward", 
+                "Normal"
+            ], 
+            "right elbow": [
+                "Forward", 
+                "Normal"
+            ], 
+            "right wrist": [
+                "Forward", 
+                "Normal"
+            ], 
+            "left elbow": [
+                "Forward", 
+                "Normal"
+            ], 
+            "left wrist": [
+                "Forward", 
+                "Normal"
+            ], 
+            "rotation": [
+                "ToRight", 
+                "0"
+            ]
+        }, 
+        "Position1": {
+            "start time": [
+                "625"
+            ], 
+            "duration": [
+                "0"
+            ], 
+            "head": [
+                "Forward", 
+                "Normal"
+            ], 
+            "right elbow": [
+                "Forward", 
+                "Normal"
+            ], 
+            "right wrist": [
+                "Forward", 
+                "Normal"
+            ], 
+            "left elbow": [
+                "Forward", 
+                "Normal"
+            ], 
+            "left wrist": [
+                "Forward", 
+                "Normal"
+            ], 
+            "rotation": [
+                "ToRight", 
+                "0"
+            ]
+        }, 
+        "Position2": {
+            "start time": [
+                "2125"
+            ], 
+            "duration": [
+                "-1"
+            ], 
+            "head": [
+                "Forward", 
+                "Normal"
+            ], 
+            "right elbow": [
+                "Place", 
+                "Low"
+            ], 
+            "right wrist": [
+                "Place", 
+                "Low"
+            ], 
+            "left elbow": [
+                "Place", 
+                "Low"
+            ], 
+            "left wrist": [
+                "Place", 
+                "Low"
+            ], 
+            "rotation": [
+                "ToRight", 
+                "0"
+            ]
+        }
+    }
+}
