@@ -97,6 +97,11 @@ main.py [--alg]algorithm [--inputfile][path][filename] [--outputfile][path] [--n
     --alg           "total", "parallel" or "naive" processing algorithm used to extract keyframes;
                     if not specified, "total" is used
 
+    --base-rotation-style select the base rotation style.
+                    "every": update base rotation every frame.
+                    "first": use the base rotation of the first frame.
+                    if not specified, "every" is used.
+
     --inputfile     Required. Path and filename of .csv joint data file
 
     --outputfolder  Destination folder for processed labanotation files in .json format;
