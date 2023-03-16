@@ -1,6 +1,7 @@
 ﻿tmplaban.json
 tmpaudio.mp3
 edgedriver_win64
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
