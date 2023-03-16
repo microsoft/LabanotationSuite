@@ -7,8 +7,8 @@ import os,sys,inspect,errno
 import argparse
 import numpy as np
 
-# import matplotlib
-# matplotlib.use('Qt5Agg')
+import matplotlib
+matplotlib.use('TkAgg')
 
 import matplotlib.pyplot as plt
 
