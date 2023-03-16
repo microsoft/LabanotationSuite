@@ -1,0 +1,122 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>MSRAbot</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+
+    <script type="text/javascript" src="/static/js/libs/three.min.js"></script>
+    <script type="text/javascript" src="/static/js/libs/stats.min.js"></script>
+    <script type="text/javascript" src="/static/js/libs/dat.gui.min.js"></script>
+    <script type="text/javascript" src="/static/js/libs/Tween.js"></script>
+    <script type="text/javascript" src="/static/js/libs/loaders/GLTFLoader.js"></script>
+
+    <script type="text/javascript" src="/static/js/libs/controls/DragControls.js"></script>
+    <script type="text/javascript" src="/static/js/libs/controls/OrbitControls.js"></script>
+    <script type="text/javascript" src="/static/js/libs/controls/TransformControls.js"></script>
+
+    <script>
+        var dev_version = '' + Math.floor(Math.random() * 100);
+        var js_files = ['utils', 'msrabot', 'labanotation', 'app_conversation'];
+        for (var i = 0; i < js_files.length; i++) {
+            document.write('<script src="/static/js/' + js_files[i] + '.js?rand=' + dev_version + '"\><\/script>');
+        }
+    </script>
+</head>
+
+<body style="touch-action: none;">
+    <div>
+        <main id="app" style="position:relative; width: 100%; height: 75%; top: 0px;"></main>
+        <div id="chatbox" style="z-index:10001; position:absolute; bottom: 0px; width: 100%; height: 25%; overflow: scroll; background-color: #ffffff; " >
+            <ul id="messages" style="font-family: Arial, sans-serif; font-size: 24px; color: #000; ">
+                <li>Talk to MSRAbot!</li>
+            </ul>
+            <form action="" onsubmit="send_message(event)" id="form" style="display: block" >
+                <input type="text" id="messageText" autocomplete="off" style="font-family: Arial, sans-serif; font-size: 24px;"/>
+                <button id="sendform" style="font-family: Arial, sans-serif; font-size: 24px;">Send</button>
+            </form>
+            <button onclick="switch_mic()" id="button_mutemic" style="font-family: Arial, sans-serif; font-size: 24px;">mute mic</button>
+        </div>
+    </div>
+    <div hidden , id="mic_enabled" , value="yes"></div>
+
+    <script>
+        var ws = new WebSocket('ws://localhost:9100/ws/user');
+        function process_message(event) {
+            console.log('message arrived');
+            console.log(event.data)
+
+            var messages = document.getElementById('messages');
+            var message = document.createElement('li');
+            var content = document.createTextNode(event.data);
+            message.appendChild(content);
+            //set the color of the message. If it is from MSRAbot, it is light blue, otherwise it is black
+            if (event.data.startsWith('MSRAbot:')) {
+                message.style.color = '#93BEE4';
+            } else {
+                message.style.color = '#000000';
+            }
+            messages.appendChild(message);
+            var element = document.getElementById("chatbox");
+            element.scrollTop = element.scrollHeight;
+            if (event.data.startsWith('MSRAbot:')){
+                switch_mic();
+                var audio = new Audio('/static/audio/tmpaudio.mp3');
+                audio.addEventListener('ended', function() {
+                    switch_mic();
+                  });
+                audio.play();
+                _app.loadNewFile('/static/laban/tmplaban.json');
+                _app.labanotation.pausing = false;
+            }
+        }
+
+        ws.onmessage = process_message;
+        // no scrollbars
+        document.body.style.overflow = 'hidden';
+        run();
+        //--------------------------------------------------------------------------------------------
+        function run() {
+            _app = new APP(document.getElementById('app'));
+            if (_app) {
+                _app.initialize('/static/LabanotationLibrary/away.json');
+                animate();
+            }
+        }
+        //--------------------------------------------------------------------------------------------
+        function animate() {
+            requestAnimationFrame(animate);
+
+            _app.update();
+            _app.render();
+        }
+
+        function switch_mic() {
+            var mic_enabled = document.getElementById("mic_enabled").getAttribute('value')
+            if (mic_enabled == 'yes') {
+                document.getElementById("mic_enabled").setAttribute('value', 'no')
+                document.getElementById("button_mutemic").innerHTML = "Unmute Mic"
+            }
+            else {
+                document.getElementById("mic_enabled").setAttribute('value', 'yes')
+                document.getElementById("button_mutemic").innerHTML = "Mute Mic"
+            }
+        }
+        const MAX_LENGTH = 50
+        function send_message(event) {
+            var input = document.getElementById("messageText");
+            if (input.value) {
+                console.log('message valid');
+                if (input.value.length > MAX_LENGTH) {
+                    ws.send(input.value.substr(0, MAX_LENGTH))
+                } else {
+                    console.log(input.value);
+                    ws.send(input.value);
+                }
+            }
+            input.value = ''
+            event.preventDefault();
+        }
+    </script>
+</body>
+</html>

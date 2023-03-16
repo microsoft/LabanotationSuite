@@ -93,6 +93,8 @@ class application:
         parser = argparse.ArgumentParser(description='Kinect .csv to Labanotation .json gesture keyframe extractor.')
 
         parser.add_argument('--algorithm', default='total', choices=['total', 'parallel', 'naive'], help='select the Laban key frame extraction algorithm: "total" total energy, "parallel" parallel energy, "naive" treat each Kinect frame as a keyframe')
+        parser.add_argument('--base-rotation-style', default='every',
+                            choices=['every', 'first'], help='select the base rotation style. "every": update base rotation every frame. "first": use the base rotation of the first frame.')
         parser.add_argument('--inputfile', help='Kinect data input file')
         parser.add_argument('--nogui', action='store_true', default=False, help='process Kinect data but don\'t display interactive GUI')
         parser.add_argument('--outputfolder', help='output folder; if not specified, output folder is .\\data_output')
@@ -111,6 +113,7 @@ class application:
         self.outputFolder = cmdArgs.outputfolder
         self.fShowGUI = not cmdArgs.nogui
         self.determineFilePaths()
+        self.base_rotation_style = cmdArgs.base_rotation_style
 
         # overwrite default screen settings
         settings.screen_cx = int(cmdArgs.screenwidth)
@@ -260,7 +263,8 @@ class application:
 
         ax = self.graphFilter.ax if (self.graphFilter != None) else None
 
-        [self.timeS, self.all_laban] = self.labanotation.applyAlgorithm(ax, self.jointFrames, self.algorithm, forceReset)
+        [self.timeS, self.all_laban] = self.labanotation.applyAlgorithm(ax, self.jointFrames, self.algorithm, forceReset,
+                                                                        base_rotation_style=self.base_rotation_style)
 
         # share labanotation with skeleton graph and laban visualizer
         if (self.graphSkeleton != None):

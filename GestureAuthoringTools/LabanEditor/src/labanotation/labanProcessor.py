@@ -51,19 +51,11 @@ def to_sphere(a):
         phi = phi
     return (r, theta, phi)
 
-#------------------------------------------------------------------------------
-# Transform origin from kinect-base to shoulder-base, 
-# convert position information to angle/direction+level
-# Replace LabaProcessor::(FindDriectionXOZ, FindLevelYOZ, FindLevelXOY)
-# 
-def raw2sphere(joint):
+
+def calculate_base_rotation(joint):
     shL = np.zeros(3)
     shR = np.zeros(3)
     spM = np.zeros(3)
-    elbowR = np.zeros(3)
-    elbowL = np.zeros(3)
-    wristR = np.zeros(3)
-    wristL = np.zeros(3)
 
     shL[0] = joint[0]['shoulderL']['x']
     shL[1] = joint[0]['shoulderL']['y']
@@ -75,20 +67,6 @@ def raw2sphere(joint):
     spM[0] = joint[0]['spineM']['x']
     spM[1] = joint[0]['spineM']['y']
     spM[2] = joint[0]['spineM']['z']
-
-    elbowR[0] = joint[0]['elbowR']['x']-shR[0]
-    elbowR[1] = joint[0]['elbowR']['y']-shR[1]
-    elbowR[2] = joint[0]['elbowR']['z']-shR[2]
-    elbowL[0] = joint[0]['elbowL']['x']-shL[0]
-    elbowL[1] = joint[0]['elbowL']['y']-shL[1]
-    elbowL[2] = joint[0]['elbowL']['z']-shL[2]
-    
-    wristR[0] = joint[0]['wristR']['x']-joint[0]['elbowR']['x']
-    wristR[1] = joint[0]['wristR']['y']-joint[0]['elbowR']['y']
-    wristR[2] = joint[0]['wristR']['z']-joint[0]['elbowR']['z']
-    wristL[0] = joint[0]['wristL']['x']-joint[0]['elbowL']['x']
-    wristL[1] = joint[0]['wristL']['y']-joint[0]['elbowL']['y']
-    wristL[2] = joint[0]['wristL']['z']-joint[0]['elbowL']['z']
 
     # convert kinect space to spherical coordinate
     # 1. normal vector of plane defined by shoulderR, shoulderL and spineM
@@ -104,12 +82,53 @@ def raw2sphere(joint):
     nv[2] = norm1d(sh[2])
     # 2. generate the rotation matrix for
     # converting point from kinect space to euculid space, then sphereical
-    conv = np.linalg.inv(np.transpose(nv))
+    base_rotation = np.transpose(nv)
+    return base_rotation
 
-    elRdeg = to_sphere(np.dot(conv,elbowR))
-    elLdeg = to_sphere(np.dot(conv,elbowL))
-    wrRdeg = to_sphere(np.dot(conv,wristR))
-    wrLdeg = to_sphere(np.dot(conv,wristL))
+
+#------------------------------------------------------------------------------
+# Transform origin from kinect-base to shoulder-base, 
+# convert position information to angle/direction+level
+# Replace LabaProcessor::(FindDriectionXOZ, FindLevelYOZ, FindLevelXOY)
+# 
+def raw2sphere(joint, base_rotation=None):
+    shL = np.zeros(3)
+    shR = np.zeros(3)
+    elbowR = np.zeros(3)
+    elbowL = np.zeros(3)
+    wristR = np.zeros(3)
+    wristL = np.zeros(3)
+
+    shL[0] = joint[0]['shoulderL']['x']
+    shL[1] = joint[0]['shoulderL']['y']
+    shL[2] = joint[0]['shoulderL']['z']
+    shR[0] = joint[0]['shoulderR']['x']
+    shR[1] = joint[0]['shoulderR']['y']
+    shR[2] = joint[0]['shoulderR']['z']
+
+    elbowR[0] = joint[0]['elbowR']['x']-shR[0]
+    elbowR[1] = joint[0]['elbowR']['y']-shR[1]
+    elbowR[2] = joint[0]['elbowR']['z']-shR[2]
+    elbowL[0] = joint[0]['elbowL']['x']-shL[0]
+    elbowL[1] = joint[0]['elbowL']['y']-shL[1]
+    elbowL[2] = joint[0]['elbowL']['z']-shL[2]
+    
+    wristR[0] = joint[0]['wristR']['x']-joint[0]['elbowR']['x']
+    wristR[1] = joint[0]['wristR']['y']-joint[0]['elbowR']['y']
+    wristR[2] = joint[0]['wristR']['z']-joint[0]['elbowR']['z']
+    wristL[0] = joint[0]['wristL']['x']-joint[0]['elbowL']['x']
+    wristL[1] = joint[0]['wristL']['y']-joint[0]['elbowL']['y']
+    wristL[2] = joint[0]['wristL']['z']-joint[0]['elbowL']['z']
+
+    if base_rotation is None:
+        conv = calculate_base_rotation(joint)
+    else:
+        conv = base_rotation
+
+    elRdeg = to_sphere(np.dot(conv.T, elbowR))
+    elLdeg = to_sphere(np.dot(conv.T, elbowL))
+    wrRdeg = to_sphere(np.dot(conv.T, wristR))
+    wrLdeg = to_sphere(np.dot(conv.T, wristL))
 
     return (elRdeg,elLdeg,wrRdeg,wrLdeg)
 

@@ -104,7 +104,8 @@ class Algorithm:
     #------------------------------------------------------------------------------
     # convert joint data frames to labanotation
     #
-    def convertToLabanotation(self, ax, jointD, forceReset):
+    def convertToLabanotation(self, ax, jointD, forceReset,
+                              base_rotation_style='every'):
         if (forceReset):
             self.reset()
 
@@ -127,14 +128,19 @@ class Algorithm:
             self.y_data = []
             self.points = []
 
-        self.calculateUnfilteredLaban()
+        self.calculateUnfilteredLaban(base_rotation_style=base_rotation_style)
 
         return self.totalEnergy()
 
     #------------------------------------------------------------------------------
     # unfiltered labanotation
     #
-    def calculateUnfilteredLaban(self):
+    def calculateUnfilteredLaban(self, base_rotation_style='every'):
+        base_rotation = None
+        if base_rotation_style == 'first':
+            base_rotation = lp.calculate_base_rotation(
+                self.jointFrames[0])
+
         cnt = len(self.jointFrames)
 
         # get hand position
@@ -146,9 +152,12 @@ class Algorithm:
         wrL = np.zeros((cnt, 3))
         
         for i in range(0, cnt):
+            if base_rotation_style == 'every':
+                base_rotation = lp.calculate_base_rotation(self.jointFrames[i])
             self.unfilteredTimeS[i] = self.jointFrames[i]['timeS'][0]
-
-            (elR[i], elL[i], wrR[i], wrL[i]) = lp.raw2sphere(self.jointFrames[i])
+            (elR[i], elL[i], wrR[i], wrL[i]) = lp.raw2sphere(
+                self.jointFrames[i],
+                base_rotation=base_rotation)
 
         # [right upper/elbow, right lower/wrist, left upper/elbow, left lower/wrist]
         # use coordinate2laban to generate labanotation for all frames

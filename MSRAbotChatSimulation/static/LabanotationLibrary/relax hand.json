@@ -1,0 +1,68 @@
+{
+    "relax hand": {
+        "Position0": {
+            "start time": [
+                "1"
+            ], 
+            "duration": [
+                "0"
+            ], 
+            "head": [
+                "Forward", 
+                "Normal"
+            ], 
+            "right elbow": [
+                "Right", 
+                "Low"
+            ], 
+            "right wrist": [
+                "Left Forward", 
+                "Low"
+            ], 
+            "left elbow": [
+                "Left", 
+                "Low"
+            ], 
+            "left wrist": [
+                "Right Forward", 
+                "Low"
+            ], 
+            "rotation": [
+                "ToRight", 
+                "0"
+            ]
+        }, 
+        "Position1": {
+            "start time": [
+                "500"
+            ], 
+            "duration": [
+                "0"
+            ], 
+            "head": [
+                "Forward", 
+                "Normal"
+            ], 
+            "right elbow": [
+                "Right Forward", 
+                "Low"
+            ], 
+            "right wrist": [
+                "Place", 
+                "Low"
+            ], 
+            "left elbow": [
+                "Left Forward", 
+                "Low"
+            ], 
+            "left wrist": [
+                "Place", 
+                "Low"
+            ], 
+            "rotation": [
+                "ToRight", 
+                "0"
+            ]
+        }
+    }
+}

@@ -49,14 +49,16 @@ class labanotation:
     #------------------------------------------------------------------------------
     # convert joint data frames to labanotation using specified algorithm
     #
-    def applyAlgorithm(self, ax, jointD, algorithm, forceReset = False):
+    def applyAlgorithm(self, ax, jointD, algorithm, forceReset = False,
+                       base_rotation_style=None):
         self.ensureAlgorithmObject(algorithm)
 
         if (self.algorithm == None):
             print("Internal Error: Unkown alogirthm '" + algorithm + "'.")
             return (None, None)
 
-        return self.algorithm.convertToLabanotation(ax, jointD, forceReset)
+        return self.algorithm.convertToLabanotation(ax, jointD, forceReset,
+                                                    base_rotation_style=base_rotation_style)
 
     #------------------------------------------------------------------------------
     #
