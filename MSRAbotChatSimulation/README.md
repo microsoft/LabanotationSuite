@@ -14,6 +14,11 @@ MSRAbot Chatting simulation software is based on [MSRAbot simulation software](.
 - Microsoft Edge Web Browser *(https://www.microsoft.com/en-us/edge/)*
 - Python 3.7.6
 
+## Azure subscription
+Assuming you have a subscription of [Azure OpenAI](https://learn.microsoft.com/en-us/azure/cognitive-services/openai/overview) for text generation and [Azure speech service](https://learn.microsoft.com/en-us/azure/cognitive-services/speech-service/overview) for speech generation. We use [Azure Language Understanding](https://learn.microsoft.com/en-us/azure/cognitive-services/language-service/conversational-language-understanding/overview) for concept estimation, but it is optional and you will need to train the model separately. We trained our Language Understanding models on [this database](data/sentence-concept_database.csv).
+
+We provide concept estimation using [Hugging Face](https://huggingface.co/)'s sentence embedding for those who do not have the model of Azure Language Understanding.
+
 ## Installation
 
 1. Copy the entire **MSRAbotChatSimulation** folder into a convenient folder on your local computer.
