@@ -1,0 +1,378 @@
+About what time?,,question
+Ahchoo!,,panic
+"Another beer, prease.",,question
+Are there any extra charges?,,question
+Are there any golf courses around here?,,question
+Are there any good programs on TV?,,question
+Are you awake?,,question
+Are you doing anything this afternoon?,,question
+Are you feeling okay?,,question
+Are you feeling sick?,,bad
+Are you feeling sick?,,question
+Are you free this weekend?,,question
+Are you gonna be late today?,,question
+Are you good at singing?,,question
+Are you ready for tomorrow?,,question
+Are you ready?,,question
+Are you taking any madication regularly?,,question
+Are youy gonna be late today?,,deictic_you
+Aren't you forgetting something?,,question
+Can I go out to play?,,away
+Can I go out to play?,,question
+Can I make a reservation?,,question
+Can I rent the equipment?,,question
+Can you baby-sit tonight?,,question
+Cheers!,,happy
+Clean up your room.,,please
+Coffee wakes me up.,,drink
+Coffee wakes me up.,,happy
+Come and get it!,,come
+Could I see you again?,,question
+Could you give me change?,,please
+Could you give me your phone number?,,question
+Could you send me a doctor?,,please
+Did the alarm clock go off?,,deictic_that
+Did the alarm clock go off?,,question
+Did the alarm clock go off?,,quit
+Did you brush your teeth?,,question
+Did you do your homework?,,question
+Did you eat something unusual?,,bad
+Did you have a good time?,,deictic_you
+Did you have a good time?,,nice
+Did you have a good time?,,question
+Did you lock the door?,,question
+Did you sleep well?,,nice
+Did you sleep well?,,question
+Did you stay up late last night?,,question
+Did you wash your hands well?,,question
+Do the dishes!,,deictic_that
+Do you dream often?,,question
+Do you have any beer?,,drink
+Do you have any beer?,,question
+Do you have change for one thousand yen?,,please
+Do you need a doctor?,,question
+Do you need to pee?,,question
+Do you want to join me?,,question
+Don't forget to lock the door when you leave.,,deictic_that
+Don't forget to take out the garabage,,away
+Don't forget to take out the garabage,,deictic_you
+Don't leave your stuff here.,,away
+Don't leave your stuff here.,,deictic_you
+Don't spill it!,,deictic_that
+Drink moderately.,,quit
+Eat all of your vegetables.,,away
+Eat all of your vegetables.,,deictic_you
+Encore!,,happy
+Enough with your video games.,,deictic_you
+Finish up your plate.,,away
+Finish up your plate.,,deictic_you
+Get up soon.,,away
+Get up soon.,,deictic_you
+"Go for it, Hoge!",,lets_go
+Good morning.,,hello
+Good night.,,goodbye
+Have you got your lunch box?,,deictic_you
+Have you got your lunch box?,,question
+He didn't pay the debt and disappeared.,,bad
+Help me clean up the house.,,come
+Help me clean up the house.,,please
+Help me.,,come
+How about a drink?,,drink
+How about a rain check?,,question
+How about a rain check?,,sorry
+"How about a song, John?",,question
+How about having dinner with me?,,question
+How about the tenth?,,question
+How did it go today?,,deictic_that
+How did it go today?,,question
+How do you like sake?,,question
+How long does it last?,,question
+How long is Hogehoge playing?,,question
+How much is it per day?,,question
+How much is it per person?,,question
+How soon can you get it ready?,,question
+Hurry or you'll be late for school,,deictic_you
+Hurry or you'll be late for school,,lets_go
+Hurry up and get dressed.,,deictic_you
+Hurry up and get dressed.,,lets_go
+Hurry up and go to sleep.,,away
+Hurry up and go to sleep.,,deictic_you
+I broke my leg.,,deictic_me
+I cannot afford to be lazy.,,away
+I can't keep up with the new songs.,,shake_head
+I can't see because of the person in front of me.,,shake_head
+I do not have the nerve to sing in front of people.,,away
+I don't feel well.,,shake_head
+I don't have any appetite.,,deictic_me
+I don't have much money on me now.,,sorry
+I don't like asparagus.,,dont_like
+I drank too much.,,dont_like
+I feel a little tipsy.,,tired
+I feel chilly.,,deictic_me
+I feel dizzy.,,deictic_me
+I feel like throwing up.,,deictic_me
+I feel sick.,,shake_head
+I feel sluggish.,,deictic_me
+I get drunk easily.,,shake_head
+I had a night mare.,,bad
+I have a bad cold.,,deictic_me
+I have a bit of a fever.,,deictic_me
+I have a dull pain.,,deictic_me
+I have a hangover,,drink
+I have a hangover,,tired
+I have a headache.,,deictic_me
+I have a high temperature.,,deictic_me
+I have a lot of money on me now.,,big
+I have a piercing pain.,,deictic_me
+I have a runny nose.,,deictic_me
+I have a sharp pain.,,deictic_me
+I have a slight cold.,,deictic_me
+I have a stabbing pain.,,deictic_me
+I have a stomachache.,,deictic_me
+I have a stuffy nose.,,deictic_me
+I have a throbbing pain.,,deictic_me
+I have a toothache.,,deictic_me
+I have diarrhea.,,deictic_me
+I have food poisoning.,,deictic_me
+I have high/low blood pressure.,,deictic_me
+I have to go wash my face.,,deictic_me
+I have to iron my skirt.,,deictic_that
+I have to rush!,,deictic_me
+I have to rush!,,lets_go
+I have to vacuum my room.,,deictic_me
+I hope you can come.,,question
+I need a drink.,,drink
+I need to deposit fifty thousand yen.,,go
+"I need to withdraw 50,000 yen.",,come
+I paid out of my own pocket.,,deictic_me
+I quit smoking,,quit
+I set the alarm clock for 8:00,,deictic_that
+I should have drank less.,,shake_head
+I think I have a fever.,,deictic_me
+I usually work out after work.,,go
+I want to take a nap.,,sleepy
+I want to watch more TV.,,many
+I was moved.,,happy
+I'd like to make golf reservations.,,please
+I'd like to play golf.,,question
+I'd like to request a song.,,say
+I'd like to see a doctor.,,please
+"I'd like two A-seat tickets for October 3rd, please.",,please
+"If you don't hurry, we'll be late.",,away
+"If you don't hurry, we'll be late.",,deictic_you
+I'll be busy tomorrow,,bad
+I'll dry the dishes,,nod
+I'm a night person.,,deictic_me
+I'm afraid I can't.,,sorry
+I'm broke.,,sorry
+I'm coming.,,nod
+I'm drunk.,,tired
+I'm free today.,,good
+I'm going to cram school now.,,go
+I'm going to lie down.,,tired
+I'm going to take a bath.,,deictic_me
+I'm home,,goodbye
+I'm hungry.,,hungry
+I'm late!,,deictic_me
+I'm leaving. Bye!,,goodbye
+I'm loaded.,,tired
+I'm not feeling well.,,tired
+I'm not ready.,,bad
+I'm not taking any medication.,,shake_head
+I'm out of cash.,,sorry
+I'm sleepy.,,sleepy
+I'm still sleepy,,sleepy
+I'm still yawning,,sleepy
+I'm taking a shower.,,deictic_me
+I'm tired.,,tired
+I'm tone-deaf.,,shake_head
+I'm watching TV.,,deictic_that
+Is dinner ready?,,hungry
+Is dinner ready?,,question
+Is it serious?,,question
+Is it too early?,,question
+Is it too late?,,question
+Is seven convenient for you?,,question
+Is this seat taken?,,deictic_this
+Is this seat taken?,,question
+It might rain today.,,weather
+It was very delicious. Thank you.,,thanks
+It's a date.,,good
+It's a nice day!,,nice
+It's a nice day!,,weather
+It's already 8:00.,,deictic_that
+It's drafty in this room.,,deictic_this
+It's due on the thirtieth.,,deictic_that
+It's good to be home.,,good
+It's good to be home.,,happy
+It's itchy.,,shake_head
+It's so dusty.,,shake_head
+It's strong.,,dont_like
+It's stuffy in this room.,,bad
+It's time to eat breakfast.,,deictic_that
+It's time to eat breakfast.,,hungry
+It's time to eat.,,come
+It's time to get up!,,deictic_that
+It's time to get up!,,lets_go
+It's time to go wee-wee.,,question
+It's upside down.,,contrast
+It's your turn to take out the garabage,,deictic_you
+I've been fogetful lately.,,bad
+I've never heard of that song.,,confuse
+I've started jogging,,go
+Let me check your blood pressure.,,lets_go
+Let me check your temperature.,,lets_go
+Let's eat.,,lets_go
+Let's enjoy ourselves.,,lets_go
+Let's fold up the futon.,,away
+Let's fold up the futon.,,lets_go
+Let's forget about work and have some fun.,,lets_go
+Let's get going.,,lets_go
+Let's go grocery shopping,,deictic_me
+Let's go grocery shopping,,lets_go
+Let's go to karaoke.,,lets_go
+Let's play catch.,,lets_go
+Let's play hooky today!,,deictic_you
+Let's play hooky today!,,lets_go
+Let's sing a duet.,,lets_go
+Let's sit closer up front.,,lets_go
+Let's spread out the futon.,,lets_go
+Make sure you brush your teeth.,,deictic_you
+May I have my allowance?,,please
+May I have my allowance?,,question
+"Mom, what's for dinner tonight?",,hungry
+"Mom, what's for dinner tonight?",,question
+"No, I was awake.",,shake_head
+Nomo is on TV.,,deictic_that
+Nothing beats this!,,happy
+Now it's my turn.,,deictic_me
+"One whiskey with water, please.",,please
+Ouch!,,panic
+Please call an ambulance.,,please
+Please dust the shelves.,,please
+Please go ahead.,,please
+Please make a reservation for golf.,,please
+Please mop the floor.,,please
+Please scrub the sink.,,please
+Please sweep the floor.,,please
+Please water the plants.,,please
+Put those pajamas away!,,away
+Ready.,,ok
+See you then.,,goodbye
+Shall I come to pick you up?,,question
+She passed out.,,panic
+Singing along with recorded music.,,laugh_head
+"Sorry, I'm tied up.",,sorry
+"Sorry, we're sold out.",,sorry
+Study hard.,,lets_go
+Sweet dreams!,,good
+Take care of my brother and sister.,,please
+"Thanks for asking, but�c.",,sorry
+That day is fine.,,good
+"That was boring, wasn't it?",,bad
+"That was interesting, wasn't it?",,interesting
+That's a bad day for me.,,bad
+The bath is ready.,,deictic_that
+The first sip is the best!,,happy
+The park was crowded.,,many
+The water is boiling!,,deictic_that
+The water is leaking.,,deictic_that
+There are four of us.,,deictic_me
+"This Friday, if possible.",,please
+This is for you.,,deictic_you
+This is your share.,,deictic_you
+"This knife cuts well, doesn't it?",,deictic_this
+"This knife cuts well, doesn't it?",,quit
+This whiskey is strong.,,nod
+Time to go to sleep.,,deictic_me
+"Today, we're having curry.",,deictic_that
+"Today, we're having curry.",,happy
+"Two bottles of beer, please.",,please
+"Two, please.",,please
+Wake me up at seven tomorrow.,,deictic_me
+"We are way in the back, aren't we?",,shake_head
+Welcome home!,,hello
+We're out of dish detergent.,,small
+Were you sleeping?,,question
+Were you sleeping?,,sleepy
+What a mess!,,open_two_arms
+What a waste!,,open_two_arms
+What are you doing today?,,question
+What are you doing?,,question
+What are you drinking?,,question
+What are you going to sing?,,question
+What are your symptoms?,,question
+What do you want for your birthday?,,question
+What is karaoke?,,question
+What kind of snacks should we have?,,question
+What movie do you want to see?,,question
+What should I make for dinner?,,question
+What should I wear?,,deictic_me
+What should I wear?,,question
+What time are we starting?,,question
+What time are you coming home?,,deictic_you
+What time are you coming home?,,question
+What time do we arrive?,,question
+What time does it start?,,question
+What time is the next showing?,,question
+What time shall we leave?,,question
+What time will it be over?,,question
+What would you like for dinner?,,question
+What's for dinner?,,hungry
+What's for dinner?,,question
+What's on Channel 8?,,question
+What's on tonight?,,question
+What's wrong with me?,,question
+What's wrong with you?,,question
+What's wrong?,,question
+What's your karaoke specialty?,,question
+"Whe have great seats, don�ft we?",,good
+When are you free?,,question
+When can I come over?,,question
+When can you come over?,,question
+When do you have tickets?,,question
+When is it convenient for you?,,question
+When is this due?,,question
+When would you like to play?,,question
+When you have time.,,deictic_you
+Whenever.,,nod
+Where are the snacks?,,question
+Where can I buy a ticket?,,question
+Where is Hogehoge playing?,,question
+Where shall we meet?,,question
+Who is in this movie?,,question
+Why don't we go to see a baseball game?,,lets_go
+Will you change the baby's diaper?,,contrast
+Will you change the baby's diaper?,,question
+Will you feed the dog?,,please
+Will you help me fold up the clothes?,,please
+Will you iron the shirt?,,please
+Will you take the dog for a walk?,,please
+Would you change the channel?,,please
+Would you clear the table?,,away
+Would you clear the table?,,please
+Would you clear the table?,,question
+Would you help me set the table?,,question
+Would you like a refill?,,question
+Would you like to go to a movie?,,question
+Would you like to golf tomorrow?,,question
+Would you like to have a drink after work?,,drink
+Would you like to have a drink after work?,,question
+Would you put up the clothes to dry?,,please
+Would you run to the store?,,deictic_that
+Would you run to the store?,,question
+Would you turn off the alarm clock?,,deictic_that
+Would you turn off the alarm clock?,,question
+You decide when.,,deictic_you
+You decide where.,,deictic_you
+You don't look well.,,shake_head
+You finally got up.,,deictic_you
+You left the TV on.,,away
+You left the TV on.,,deictic_you
+You look pale.,,shake_head
+You sing first.,,lets_go
+You were snoring last night.,,deictic_you
+You're a good singer!,,good
+You're pretending to be asleep.,,sleepy
+You're wearing your sweater inside out.,,contrast
+You're wearing your sweater inside out.,,deictic_you

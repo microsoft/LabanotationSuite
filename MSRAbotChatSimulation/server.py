@@ -9,21 +9,27 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.security import HTTPBasic, HTTPBasicCredentials
 from starlette.exceptions import HTTPException
 from starlette.status import HTTP_401_UNAUTHORIZED
-from utils.aimodels import Davinci3, ChatGPT
-from utils.luis import luis
+import utils.aimodels as aimodels
+import utils.gestureengine as gestureengine
 import numpy as np
 import os
 import copy
 from mutagen.mp3 import MP3 as mp3
 
+#------------------------------
 # Set your credentials here
 credentials_username = "username" 
 credentials_password = "password"
+# Choose your preferred AImodel
+chatmodel = aimodels.ChatGPT # aimodels.Dacinvi3
+# Choose your preferred gesture selection mode
+gestureengine = gestureengine.bert() #gestureengine.luis() # gestureengine.bert() # gestureengine.random()
+#------------------------------
+
 
 with open('./secrets.json') as f:
     credentials = json.load(f)
-luis_handler_intent = luis(credentials["intent_recognizer"])
-laban_dir = 'static/LabanotationLibrary'
+laban_dir = 'data/LabanotationLibrary'
 jsonfiles = os.listdir(laban_dir)
 
 
@@ -65,7 +71,7 @@ class ConnectionManager:
     async def connect(self, websocket: WebSocket):
         await websocket.accept()
         self.connections.append(websocket)
-        self.models[websocket] = ChatGPT() # Davinci3()
+        self.models[websocket] = chatmodel()
 
     def disconnect(self, websocket: WebSocket):
         self.connections.remove(websocket)
@@ -117,10 +123,10 @@ async def interface(user_input, aimodel):
     return aimodel_message
 
 
-async def gestureengine(agent_input):
+async def gestureselector(agent_input):
     # any algorithm is OK, as long as it returns intent from user input.
     # intent should be the prefix of the json file (e.g., away, deictic, etc.)
-    intent = luis_handler_intent.analyze_input(agent_input)
+    intent = gestureengine.analyze_input(agent_input)
     print('intent is:' + intent)
     jsoncandidate = []
     for jsonfile in jsonfiles:
@@ -151,7 +157,7 @@ async def websocket_endpoint(websocket: WebSocket, session_id: str):
             await manager.send_personal_message(f"User: {data}", websocket)
             agent_return = await interface(data, manager.models[websocket])
             if agent_return is not None:
-                await gestureengine(agent_return)
+                await gestureselector(agent_return)
                 await manager.send_personal_message(f"MSRAbot: {agent_return}", websocket)
             else:
                 pass
