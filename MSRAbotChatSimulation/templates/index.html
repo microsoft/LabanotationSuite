@@ -35,13 +35,22 @@
                 <input type="text" id="messageText" autocomplete="off" style="font-family: Arial, sans-serif; font-size: 24px;"/>
                 <button id="sendform" style="font-family: Arial, sans-serif; font-size: 24px;">Send</button>
             </form>
-            <button onclick="switch_mic()" id="button_mutemic" style="font-family: Arial, sans-serif; font-size: 24px;">mute mic</button>
+            <button id="button_mic" style="font-family: Arial, sans-serif; font-size: 24px;">Start Mic</button>
         </div>
     </div>
-    <div hidden , id="mic_enabled" , value="yes"></div>
+    <div hidden , id="mic_enabled" , value="no"></div>
 
     <script>
-        var ws = new WebSocket('ws://localhost:9100/ws/user');
+        function generateSessionId() {
+            var chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+            var sessionId = '';
+            for (var i = 0; i < 16; i++) {
+              sessionId += chars.charAt(Math.floor(Math.random() * chars.length));
+            }
+            return sessionId;
+          }
+        var session_id = generateSessionId();
+        var ws = new WebSocket('ws://localhost:9100/ws/'+session_id);
         function process_message(event) {
             console.log('message arrived');
             console.log(event.data)
@@ -60,10 +69,10 @@
             var element = document.getElementById("chatbox");
             element.scrollTop = element.scrollHeight;
             if (event.data.startsWith('MSRAbot:')){
-                switch_mic();
+                switch_mic('off');
                 var audio = new Audio('/static/audio/tmpaudio.mp3');
                 audio.addEventListener('ended', function() {
-                    switch_mic();
+                    switch_mic('on');
                   });
                 audio.play();
                 _app.loadNewFile('/static/laban/tmplaban.json');
@@ -91,15 +100,20 @@
             _app.render();
         }
 
-        function switch_mic() {
-            var mic_enabled = document.getElementById("mic_enabled").getAttribute('value')
-            if (mic_enabled == 'yes') {
-                document.getElementById("mic_enabled").setAttribute('value', 'no')
-                document.getElementById("button_mutemic").innerHTML = "Unmute Mic"
+        function switch_mic(status) {
+            if (status=='on'){
+                var toggleButton = document.getElementById('button_mic');
+                toggleButton.disabled = false;
+                if (toggleButton.textContent == 'Start Mic') {
+                    document.getElementById("mic_enabled").setAttribute('value', 'no')
+                } else {
+                    document.getElementById("mic_enabled").setAttribute('value', 'yes')
+                }
             }
             else {
-                document.getElementById("mic_enabled").setAttribute('value', 'yes')
-                document.getElementById("button_mutemic").innerHTML = "Mute Mic"
+                document.getElementById("mic_enabled").setAttribute('value', 'no')
+                var toggleButton = document.getElementById('button_mic');
+                toggleButton.disabled = true;
             }
         }
         const MAX_LENGTH = 50
@@ -117,6 +131,47 @@
             input.value = ''
             event.preventDefault();
         }
+    </script>
+    <script>
+        const recognition = new webkitSpeechRecognition();
+        recognition.lang = 'en-US';
+        recognition.continuous = true;
+        recognition.interimResults = true;
+        recognition.onresult = function(event) {
+          var interim_transcript = '';
+          var final_transcript = '';
+
+          for (var i = event.resultIndex; i < event.results.length; ++i) {
+            if (event.results[i].isFinal) {
+              final_transcript += event.results[i][0].transcript;
+            } else {
+              interim_transcript += event.results[i][0].transcript;
+            }
+          }
+          console.log('Final transcript: ' + final_transcript);
+          var is_mic_enabled = document.getElementById("mic_enabled").getAttribute('value')
+          if (is_mic_enabled == 'yes'){
+            var input = document.getElementById("messageText");
+            input.value = final_transcript
+            send_message()
+          }
+        };
+  
+        var isRecognizing = false;
+        const toggleButton = document.getElementById('button_mic');
+        toggleButton.addEventListener('click', () => {
+          if (toggleButton.textContent == 'Start Mic') {
+            document.getElementById("mic_enabled").setAttribute('value', 'yes')
+            toggleButton.textContent = 'Stop Mic';
+          } else if (toggleButton.textContent == 'Stop Mic'){
+            document.getElementById("mic_enabled").setAttribute('value', 'no')
+            toggleButton.textContent = 'Start Mic';
+          } else {
+            // error
+            console.log('message valid');
+          }
+        });
+        recognition.start();
     </script>
 </body>
 </html>

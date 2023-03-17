@@ -14,22 +14,6 @@ MSRAbot Chatting simulation software is based on [MSRAbot simulation software](.
 - Microsoft Edge Web Browser *(https://www.microsoft.com/en-us/edge/)*
 - Python 3.7.6
 
-
-## Before you start
-* Download the latest browser drivers.
-https://developer.microsoft.com/en-us/microsoft-edge/tools/webdriver/
-Locate the driver in the [client_handler](./client_handler) folder.
-Directory structure should look like this:
-```bash
-LfO_interface
-├───client_handler
-│   │───webclient.py
-│   │───edgedriver_win64
-│   │   │───msedgedriver.exe
-```
-You can use any browser, but you need to modify the [webclient.py](./client_handler/webclient.py) to use the browser of your choice. You may need to enable long path if you are using Windows 10 or Windows 11.
-[Reference](https://www.thewindowsclub.com/how-to-enable-or-disable-win32-long-paths-in-windows-11-10)
-
 ## Installation
 
 1. Copy the entire **MSRAbotChatSimulation** folder into a convenient folder on your local computer.
@@ -48,12 +32,7 @@ You can use any browser, but you need to modify the [webclient.py](./client_hand
 ```
 > python -m uvicorn server:app --host localhost --port 9100
 ```
-4. Open another terminal, navigate to **client_handler** folder and run this command:
-```
-> python webclient.py
-```
-
-**Note:** webclient.py handles speech recognition when you use microphone as the interface. If you are using text interface, you do not need to run webclient.py and just open the URL http://localhost:9100
+4. Open a browser and access URL http://localhost:9100
 ## Viewing Gestures
 Animated gestures are viewed in the browser by selecting and loading JSON files. View angle, panning, and zoom are available by clicking and holding mouse buttons and scroll wheels within the scene. Animation speed can be adjusted with a slider bar in the upper-right control panel.
 
