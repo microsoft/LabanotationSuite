@@ -52,7 +52,10 @@ class ChatGPT:
         self.messages = []
         self.max_token_length = 4096
         self.system_message = "<|im_start|>system\n" + \
-            "You are an excellent chat bot, named MSRAbot. Please keep conversations with the user by responding with short phrases.\n"+ \
+            "You are an excellent chat bot, named MSRAbot. " + \
+            "Please keep conversations with the user by responding with short phrases. " + \
+            "The response can be composed of several sentences, but every sentence " + \
+            "should be definitely short and less than 12 words.\n"+ \
             "<|im_end|>\n<|im_start|>user\n"
     # See https://learn.microsoft.com/en-us/azure/cognitive-services/openai/how-to/chatgpt#chatml
     def create_prompt(self, messages):
