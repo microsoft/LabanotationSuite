@@ -2,10 +2,13 @@ import json
 from utils import speech_synthesizer
 from typing import List
 import fastapi
-from fastapi import WebSocket, Request
+from fastapi import WebSocket, Request, WebSocketDisconnect, Depends
 from fastapi.responses import HTMLResponse, FileResponse
 from fastapi.templating import Jinja2Templates
 from fastapi.staticfiles import StaticFiles
+from fastapi.security import HTTPBasic, HTTPBasicCredentials
+from starlette.exceptions import HTTPException
+from starlette.status import HTTP_401_UNAUTHORIZED
 from utils.aimodels import Davinci3, ChatGPT
 from utils.luis import luis
 import numpy as np
@@ -13,7 +16,9 @@ import os
 import copy
 from mutagen.mp3 import MP3 as mp3
 
-aimodel = ChatGPT() #Davinci3()
+# Set your credentials here
+credentials_username = "username" 
+credentials_password = "password"
 
 with open('./secrets.json') as f:
     credentials = json.load(f)
@@ -21,30 +26,32 @@ luis_handler_intent = luis(credentials["intent_recognizer"])
 laban_dir = 'static/LabanotationLibrary'
 jsonfiles = os.listdir(laban_dir)
 
+
 def load_laban(jsondir, jsonfile, time_speech=None):
-    with open(os.path.join(jsondir,jsonfile)) as f:
+    with open(os.path.join(jsondir, jsonfile)) as f:
         data = json.load(f)
         data = data[jsonfile.split('.')[0]]
     data_write = copy.copy(data)
     current_time = 0
     for item in data:
         try:
-            duration = int(data[item]['start time'][0])-current_time
-        except:
+            duration = int(data[item]['start time'][0]) - current_time
+        except BaseException:
             duration = 1000
             print(item)
-        if duration<0:
+        if duration < 0:
             import sys
             sys.stderr.write("Error!")
 
         current_time = current_time + duration
     ratio = time_speech / float(current_time)
     if time_speech is not None:
-        if time_speech>current_time:
+        if time_speech > current_time:
             for item in data:
-                data_write[item]['start time'][0] = str(int(float(data[item]['start time'][0])*ratio))
+                data_write[item]['start time'][0] = str(
+                    int(float(data[item]['start time'][0]) * ratio))
     data_save = {}
-    data_save[jsonfile.split('.')[0]] = data_write  
+    data_save[jsonfile.split('.')[0]] = data_write
     # save json file
     with open(os.path.join('static/laban/tmplaban.json'), 'w') as f:
         json.dump(data_save, f, indent=4)
@@ -53,17 +60,36 @@ def load_laban(jsondir, jsonfile, time_speech=None):
 class ConnectionManager:
     def __init__(self):
         self.connections: List[WebSocket] = []
+        self.models = {}
 
     async def connect(self, websocket: WebSocket):
         await websocket.accept()
         self.connections.append(websocket)
+        self.models[websocket] = ChatGPT() # Davinci3()
 
-    async def broadcast(self, data: str):
+    def disconnect(self, websocket: WebSocket):
+        self.connections.remove(websocket)
+        del self.models[websocket]
+
+    async def send_personal_message(self, message: str, websocket: WebSocket):
+        await websocket.send_text(message)
+
+    async def broadcast(self, message: str):
         for connection in self.connections:
-            await connection.send_text(data)
+            await connection.send_text(message)
 
 
 app = fastapi.FastAPI()
+security = HTTPBasic()
+
+
+async def authenticate(credentials: HTTPBasicCredentials = Depends(security)):
+    if credentials.username != credentials_username or credentials.password != credentials_password:
+        raise HTTPException(
+            status_code=HTTP_401_UNAUTHORIZED,
+            detail="Invalid username or password")
+    return True
+
 manager = ConnectionManager()
 app.mount("/static", StaticFiles(directory="static"), name="static")
 templates = Jinja2Templates(directory="templates")
@@ -73,16 +99,23 @@ favicon_path = 'favicon.ico'
 async def favicon():
     return FileResponse(favicon_path)
 
-@app.get("/", response_class=HTMLResponse)
+
+#@app.get("/",
+#    response_class=HTMLResponse,
+#    dependencies=[Depends(authenticate)])
+@app.get("/",
+    response_class=HTMLResponse)
 async def index(request: Request):
     return templates.TemplateResponse('index.html', {"request": request})
 
-async def interface(user_input):
+
+async def interface(user_input, aimodel):
     # if user_input does not ends with ., ?, or !, add period
     if user_input[-1] not in ['.', '?', '!']:
-            user_input = user_input + '.'    
+        user_input = user_input + '.'
     aimodel_message = aimodel.generate(user_input)
     return aimodel_message
+
 
 async def gestureengine(agent_input):
     # any algorithm is OK, as long as it returns intent from user input.
@@ -104,19 +137,23 @@ async def gestureengine(agent_input):
     del speech_synthesizer_azure_file
     mp3_length = mp3('static/audio/tmpaudio.mp3').info.length
     length_ms = int(mp3_length * 1000)
-    print('gesture duration:' + str(length_ms)) 
+    print('gesture duration:' + str(length_ms))
     load_laban(laban_dir, jsoncandidate[0], time_speech=length_ms)
 
-@app.websocket("/ws/user")
-async def websocket_endpoint(websocket: WebSocket):
+
+@app.websocket("/ws/{session_id}")
+async def websocket_endpoint(websocket: WebSocket, session_id: str):
     await manager.connect(websocket)
-    while True:
-        print('waiting input...')
-        data = await websocket.receive_text()
-        await manager.broadcast(f"User: {data}")
-        agent_return = await interface(data)
-        if agent_return is not None:
-            await gestureengine(agent_return)
-            await manager.broadcast(f"MSRAbot: {agent_return}")
-        else:
-            pass
+    try:
+        while True:
+            print('waiting input...' + session_id)
+            data = await websocket.receive_text()
+            await manager.send_personal_message(f"User: {data}", websocket)
+            agent_return = await interface(data, manager.models[websocket])
+            if agent_return is not None:
+                await gestureengine(agent_return)
+                await manager.send_personal_message(f"MSRAbot: {agent_return}", websocket)
+            else:
+                pass
+    except WebSocketDisconnect:
+        manager.disconnect(websocket)
