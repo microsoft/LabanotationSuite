@@ -1,7 +1,4 @@
-﻿tmplaban.json
-tmpaudio.mp3
-edgedriver_win64
-*.pkl
+﻿*.pkl
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

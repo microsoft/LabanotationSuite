@@ -1,1 +1,1 @@
-This folder contains tmp laban file.
+This folder contains sample laban file.

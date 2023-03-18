@@ -14,26 +14,28 @@ import utils.gestureengine as gestureengine
 import numpy as np
 import os
 import copy
+import shutil
 from mutagen.mp3 import MP3 as mp3
 
-#------------------------------
+# ------------------------------
 # Set your credentials here
-credentials_username = "username" 
+credentials_username = "username"
 credentials_password = "password"
 # Choose your preferred AImodel
-chatmodel = aimodels.ChatGPT # aimodels.Dacinvi3
+chatmodel = aimodels.ChatGPT  # aimodels.Dacinvi3
 # Choose your preferred gesture selection mode
-gestureengine = gestureengine.bert() #gestureengine.luis() # gestureengine.bert() # gestureengine.random()
-#------------------------------
+# gestureengine.luis() # gestureengine.bert() # gestureengine.random()
+gestureengine = gestureengine.bert()
+# ------------------------------
 
 
-with open('./secrets.json') as f:
+with open("./secrets.json") as f:
     credentials = json.load(f)
-laban_dir = 'data/LabanotationLibrary'
+laban_dir = "data/LabanotationLibrary"
 jsonfiles = os.listdir(laban_dir)
 
 
-def load_laban(jsondir, jsonfile, time_speech=None):
+def load_laban(jsondir, jsonfile, session_id, time_speech=None):
     with open(os.path.join(jsondir, jsonfile)) as f:
         data = json.load(f)
         data = data[jsonfile.split('.')[0]]
@@ -50,16 +52,16 @@ def load_laban(jsondir, jsonfile, time_speech=None):
             sys.stderr.write("Error!")
 
         current_time = current_time + duration
-    ratio = time_speech / float(current_time)
     if time_speech is not None:
+        ratio = time_speech / float(current_time)
         if time_speech > current_time:
             for item in data:
-                data_write[item]['start time'][0] = str(
-                    int(float(data[item]['start time'][0]) * ratio))
+                data_write[item]["start time"][0] = str(
+                    int(float(data[item]["start time"][0]) * ratio))
     data_save = {}
     data_save[jsonfile.split('.')[0]] = data_write
     # save json file
-    with open(os.path.join('static/laban/tmplaban.json'), 'w') as f:
+    with open(os.path.join("generated_files/{}/tmplaban.json".format(session_id)), "w") as f:
         json.dump(data_save, f, indent=4)
 
 
@@ -73,8 +75,15 @@ class ConnectionManager:
         self.connections.append(websocket)
         self.models[websocket] = chatmodel()
 
-    def disconnect(self, websocket: WebSocket):
+    def disconnect(self, websocket: WebSocket, session_id):
         self.connections.remove(websocket)
+        # delete tmp folder: /generated_files/session_id
+        app.mount(
+            "/generated_files_{}".format(session_id),
+            StaticFiles(
+                directory=None),
+            name="generated_files_{}".format(session_id))
+        shutil.rmtree("generated_files/{}".format(session_id))
         del self.models[websocket]
 
     async def send_personal_message(self, message: str, websocket: WebSocket):
@@ -106,11 +115,11 @@ async def favicon():
     return FileResponse(favicon_path)
 
 
-#@app.get("/",
+# @app.get("/",
 #    response_class=HTMLResponse,
 #    dependencies=[Depends(authenticate)])
 @app.get("/",
-    response_class=HTMLResponse)
+         response_class=HTMLResponse)
 async def index(request: Request):
     return templates.TemplateResponse('index.html', {"request": request})
 
@@ -123,7 +132,7 @@ async def interface(user_input, aimodel):
     return aimodel_message
 
 
-async def gestureselector(agent_input):
+async def gestureselector(agent_input, session_id):
     # any algorithm is OK, as long as it returns intent from user input.
     # intent should be the prefix of the json file (e.g., away, deictic, etc.)
     intent = gestureengine.analyze_input(agent_input)
@@ -138,18 +147,25 @@ async def gestureselector(agent_input):
     np.random.shuffle(jsoncandidate)
     # create speech synthesizer every time as it continuously generates audio
     speech_synthesizer_azure_file = speech_synthesizer.speech_synthesizer_file(
-        credentials["speech_synthesizer"], speech_synthesis_voice_name="en-US-TonyNeural")
+        credentials["speech_synthesizer"],
+        session_id,
+        speech_synthesis_voice_name="en-US-TonyNeural")
     speech_synthesizer_azure_file.synthesize_speech(agent_input)
     del speech_synthesizer_azure_file
-    mp3_length = mp3('static/audio/tmpaudio.mp3').info.length
+    mp3_length = mp3(
+        "generated_files/{}/tmpaudio.mp3".format(session_id)).info.length
     length_ms = int(mp3_length * 1000)
     print('gesture duration:' + str(length_ms))
-    load_laban(laban_dir, jsoncandidate[0], time_speech=length_ms)
+    load_laban(laban_dir, jsoncandidate[0], session_id, time_speech=length_ms)
 
 
 @app.websocket("/ws/{session_id}")
 async def websocket_endpoint(websocket: WebSocket, session_id: str):
     await manager.connect(websocket)
+    os.makedirs("generated_files/{}".format(session_id), exist_ok=True)
+    app.mount("/generated_files_{}".format(session_id),
+              StaticFiles(directory="generated_files/{}".format(session_id)),
+              name="generated_files_{}".format(session_id))
     try:
         while True:
             print('waiting input...' + session_id)
@@ -157,9 +173,9 @@ async def websocket_endpoint(websocket: WebSocket, session_id: str):
             await manager.send_personal_message(f"User: {data}", websocket)
             agent_return = await interface(data, manager.models[websocket])
             if agent_return is not None:
-                await gestureselector(agent_return)
+                await gestureselector(agent_return, session_id)
                 await manager.send_personal_message(f"MSRAbot: {agent_return}", websocket)
             else:
                 pass
     except WebSocketDisconnect:
-        manager.disconnect(websocket)
+        manager.disconnect(websocket, session_id)
