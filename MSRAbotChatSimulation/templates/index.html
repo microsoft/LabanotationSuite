@@ -32,7 +32,7 @@
                 <li>Talk to MSRAbot!</li>
             </ul>
             <form action="" onsubmit="send_message(event)" id="form" style="display: block" >
-                <input type="text" id="messageText" autocomplete="off" style="font-family: Arial, sans-serif; font-size: 24px;"/>
+                <input type="text" id="messageText" autocomplete="off" maxlength="50" style="font-family: Arial, sans-serif; font-size: 24px;"/>
                 <button id="sendform" style="font-family: Arial, sans-serif; font-size: 24px;">Send</button>
             </form>
             <button id="button_mic" style="font-family: Arial, sans-serif; font-size: 24px;">Start Mic</button>
@@ -70,12 +70,12 @@
             element.scrollTop = element.scrollHeight;
             if (event.data.startsWith('MSRAbot:')){
                 switch_mic('off');
-                var audio = new Audio('/static/audio/tmpaudio.mp3');
+                var audio = new Audio('/generated_files_'+session_id+'/tmpaudio.mp3');
                 audio.addEventListener('ended', function() {
                     switch_mic('on');
                   });
                 audio.play();
-                _app.loadNewFile('/static/laban/tmplaban.json');
+                _app.loadNewFile('/generated_files_'+session_id+'/tmplaban.json');
                 _app.labanotation.pausing = false;
             }
         }
