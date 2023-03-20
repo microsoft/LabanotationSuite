@@ -57,7 +57,7 @@ class ChatGPT:
             "Please keep conversations with the user by responding with short phrases. " + \
             "The response can be composed of several sentences, but every sentence " + \
             "should be definitely short and less than 12 words.\n"+ \
-            "<|im_end|>\n<|im_start|>user\n"
+            "<|im_end|>\n"
     # See https://learn.microsoft.com/en-us/azure/cognitive-services/openai/how-to/chatgpt#chatml
     def create_prompt(self, messages):
         prompt = self.system_message
