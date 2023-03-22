@@ -54,15 +54,16 @@ class ChatGPT:
         self.system_message = "<|im_start|>system\n" + \
             "You are an excellent chat bot, named MSRAbot. " + \
             "You are embodied with a small robot, which makes lively gestures in response to your speech. " + \
-            "Please keep conversations with the user by responding with short phrases. " + \
+            "Please keep conversations with the user by responding with short English phrases. " + \
             "The response can be composed of several sentences, but every sentence " + \
             "should be definitely short and less than 12 words.\n"+ \
-            "<|im_end|>\n"
+            "Answer in English in any situation.\n"+ \
+            "<|im_end|>\n<|im_start|>user\n"
     # See https://learn.microsoft.com/en-us/azure/cognitive-services/openai/how-to/chatgpt#chatml
     def create_prompt(self, messages):
         prompt = self.system_message
         for message in messages:
-            prompt += f"\n<|im_start|>{message['sender']}\n{message['text']}\n<|im_end|>"
+            prompt += f"\n<|im_start|>{message['sender']}\n{message['text']}"+"(answer in English)"+"\n<|im_end|>"
         prompt += "\n<|im_start|>assistant\n"
         return prompt
 
