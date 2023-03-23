@@ -65,7 +65,7 @@ class ChatGPT:
             "The response can be composed of several sentences, but every sentence " + \
             "should be definitely short and less than 12 words.\n" + \
             "Answer in English in any situation.\n" + \
-            "<|im_end|>\n<|im_start|>user\n"
+            "<|im_end|>"
     # See
     # https://learn.microsoft.com/en-us/azure/cognitive-services/openai/how-to/chatgpt#chatml
 
