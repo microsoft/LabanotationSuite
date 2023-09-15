@@ -54,7 +54,8 @@ def calcFilter(raw, gauss):
     else:
         tempArray = raw.tolist()
         glist = gauss.tolist()
-        temp = [tempArray[0]]*(len(glist)/2) + tempArray + [tempArray[-1]]*(len(glist)/2)
+        temp = [tempArray[0]] * int(len(glist) / 2) + tempArray + [tempArray[-1]] * int(len(glist) / 2)
+
         for i in range(0, len(temp)-len(glist)+1):
             tempOut.append(np.dot(temp[i:i+len(glist)],glist))
         filtered = np.array(tempOut)

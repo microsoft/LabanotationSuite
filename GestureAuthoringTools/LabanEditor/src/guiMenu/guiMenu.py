@@ -34,7 +34,8 @@ import settings
 class CaptureOutput:
     def write(self, message):
         settings.application.logMessage(message, ioRedirect=True)
-
+    def flush(self):
+        pass
 
 class guiMenu:
     fig = None

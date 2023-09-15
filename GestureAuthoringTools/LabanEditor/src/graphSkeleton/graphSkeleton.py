@@ -372,9 +372,9 @@ class graph3D:
         xspan, yspan, zspan = 3 * [np.linspace(0, 6, 15)]
         zero = np.zeros_like(xspan)
 
-        self.ax.plot3D(xspan, zero, zero, 'k--', gid='axis', color='black')
-        self.ax.plot3D(zero, yspan, zero, 'k--', gid='axis', color='black')
-        self.ax.plot3D(zero, zero, zspan, 'k--', gid='axis', color='black')
+        self.ax.plot3D(xspan, zero, zero, 'k--', gid='axis')
+        self.ax.plot3D(zero, yspan, zero, 'k--', gid='axis')
+        self.ax.plot3D(zero, zero, zspan, 'k--', gid='axis')
 
         q = -.20
         w = 1

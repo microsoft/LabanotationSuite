@@ -30,3 +30,6 @@
 /GestureAuthoringTools/LabanEditor/src/graphLaban/graphLaban.pyc
 /GestureAuthoringTools/LabanEditor/src/graphFilter/__init__.pyc
 /GestureAuthoringTools/LabanEditor/src/graphFilter/graphFilter.pyc
+
+
+*.pyc
