@@ -261,7 +261,7 @@ class Algorithm:
 
         new_indices = list(set(new_indices))
         new_indices.sort()
-
+        new_indices = [int(i) for i in new_indices]
         self.y_data = energy
         self.points = dict(zip(new_indices, self.y_data[new_indices]))
 
