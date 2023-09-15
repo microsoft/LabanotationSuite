@@ -6,15 +6,28 @@
 import os,sys
 
 import matplotlib
+print (matplotlib.matplotlib_fname())
+
 import matplotlib.pyplot as plt
 from matplotlib.backend_tools import ToolBase, ToolToggleBase
 from matplotlib.widgets import Slider, Cursor, Button, RadioButtons
 
-import Tkinter
-from Tkinter import *
+import _tkinter
+from _tkinter import *
 
-import tkFileDialog
-import tkMessageBox
+#import tkFileDialog
+from tkinter import filedialog
+
+#import tkMessageBox
+try:
+    from tkinter import messagebox
+except ImportError:
+    # Python 2
+    import tkMessageBox as messagebox
+
+import PyQt5.QtGui as qt
+import PyQt5.QtWidgets as qw
+from PyQt5.QtCore import * 
 
 # -----------------------------------------------------------------------------
 #
@@ -47,7 +60,7 @@ def initialize():
         window = plt.get_current_fig_manager().window
         screen_cx, screen_cy = window.wm_maxsize()
     elif 'Qt' in backend:
-        app = QtGui.QApplication(sys.argv)
+        app = qw.QApplication(sys.argv)
         screen_resolution = app.desktop().screenGeometry()
         screen_cx, screen_cy = screen_resolution.width(), screen_resolution.height()
 
@@ -177,7 +190,7 @@ def checkFileAlreadyExists(filePath, fileExt=".txt", fileTypes=[('text files', '
     if (not os.path.isfile(filePath)):
         return filePath
 
-    result = tkMessageBox.askyesnocancel("Labanotation", "The file '" + filePath + "' already exists.\r\n\r\n\tChoose 'Yes' to overwrite.\r\n\tChoose 'No' to choose a new file name.\r\n\tChoose 'Cancel' to cancel.\r\n", **options)
+    result = messageBox.askyesnocancel("Labanotation", "The file '" + filePath + "' already exists.\r\n\r\n\tChoose 'Yes' to overwrite.\r\n\tChoose 'No' to choose a new file name.\r\n\tChoose 'Cancel' to cancel.\r\n", **options)
     if (result is True):
         return filePath
     elif (result is None):
@@ -200,7 +213,7 @@ def checkFileAlreadyExists(filePath, fileExt=".txt", fileTypes=[('text files', '
     if (tkGuiCanvas is not None):
         options['parent'] = tkGuiCanvas
 
-    response = tkFileDialog.asksaveasfilename(**options)
+    response = filedialog.asksaveasfilename(**options)
     if (response is ''):
         return None
 

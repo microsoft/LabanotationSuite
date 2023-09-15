@@ -21,7 +21,7 @@ bType = np.dtype({'names':[ 'timeS',                # milliseconds
                             'hipL', 'kneeL', 'ankleL', 'footL',
                             'hipR', 'kneeR', 'ankleR', 'footR',
                             'spineS', 'handTL', 'thumbL', 'handTR', 'thumbR'],
-                'formats':[ long,
+                'formats':[ int,
                             bool,
                             jType, jType,
                             jType, jType,
@@ -85,7 +85,7 @@ def loadKinectDataFile(filePath, fFillGap = False):
         if ((fFillGap == True) and (idx > 0)):
             timeGap = (currentTime - lastTime) / 10000
             if (timeGap > 40):
-                cnt = timeGap/30
+                cnt = int(timeGap/30)
                 if (settings.fVerbose):
                     print('index ' + str(i) + ' is ' + str(timeGap) + 'ms')
                     print('adding ' + str(cnt) + ' frame')

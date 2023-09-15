@@ -91,8 +91,8 @@ class convertLabanScriptToView:
         dash = 40
         if y1 > y2:
             a = y1; y1 = y2; y2 = a
-        for i in range(0,(np.abs(y2-y1))/dash):
-            cv2.line(self.img,(x1,y2-i*dash),(x1,y2-i*dash-dash/2),0,2)
+        for i in range(0,int(int(np.abs(y2-y1))/dash)):
+            cv2.line(self.img,(x1,y2-i*dash),(x1,y2-i*dash-int(dash/2)),0,2)
         if y2-(i+1)*dash > y1:
             cv2.line(self.img,(x1,y2-(i+1)*dash),(x1,y1),0,2)
     
@@ -100,8 +100,8 @@ class convertLabanScriptToView:
     #------------------------------------------------------------------------------
     # canvas initialization
     def init_canvas(self):
-        unit = self.width/11
-        floor = self.height-self.bottom
+        unit = int(self.width/11)
+        floor = int(self.height-self.bottom)
         cv2.line(self.img,(unit*3,0),(unit*3,floor),0,2)
         cv2.line(self.img,(unit*5,0),(unit*5,floor),0,2)
         cv2.line(self.img,(unit*7,0),(unit*7,floor),0,2)
@@ -113,9 +113,9 @@ class convertLabanScriptToView:
             self.dashed(unit*i, 0,floor)
         i = 0
         while True:
-            x1 = unit*5-3
-            x2 = unit*5+3
-            y = floor - i*self.scale
+            x1 = int(unit*5-3)
+            x2 = int(unit*5+3)
+            y = int(floor - i*self.scale)
             if y < 0:
                 break
             cv2.line(self.img,(x1,y),(x2,y),0,2)
@@ -130,7 +130,7 @@ class convertLabanScriptToView:
         cv2.putText(self.img,'head',(10*unit-5,title), font, 0.8   , 1,2)
         cv2.putText(self.img,'arm(L)',(0*unit+10,title), font, 0.8, 1,2)
         cv2.putText(self.img,'arm(R)',(8*unit+10,title), font, 0.8, 1,2)
-#        cv2.putText(self.img, self.name,(3*unit+10,self.height-35), font, 0.8, 1,2)
+        cv2.putText(self.img, self.name,(3*unit+10,self.height-35), font, 0.8, 1,2)
     
     #------------------------------------------------------------------------------
     # draw sign of Labanotation.
@@ -144,23 +144,24 @@ class convertLabanScriptToView:
     # level: low, normal, high
     # (x1,y1) is the left top corner, (x2,y2) is the right bottom corner.
     # 
-    def sign(self, cell, (time1,time2), side="right", dire = "place", lv = "low"):
+    def sign(self, cell, timeTuple, side="right", dire = "place", lv = "low"):
+        (time1,time2) = timeTuple
         unit = self.width/11
-        x1 = (cell-1)*unit+7#left top corner
-        x2 = cell*unit-5
-        y1 = self.height-self.bottom-int(time2*self.scale)+3#right bottom corner
-        y2 = self.height-self.bottom-int(time1*self.scale)-3
+        x1 = int((cell-1)*unit+7)#left top corner
+        x2 = int(cell*unit-5)
+        y1 = int(self.height-self.bottom-int(time2*self.scale)+3)#right bottom corner
+        y2 = int(self.height-self.bottom-int(time1*self.scale)-3)
         #shading: pattern/black/dot
         if lv=="normal":
-            cv2.circle(self.img,((x1+x2)/2,(y1+y2)/2), 4, 0,-1)
+            cv2.circle(self.img,(int((x1+x2)/2),int((y1+y2)/2)), 4, 0,-1)
         elif lv=="high":
             step = 20
             i=0
             while True:
-                xl = x1#start point at the left
-                yl = y1+i*step           
-                xr = x1+i*step#end point at th right
-                yr = y1
+                xl = int(x1)#start point at the left
+                yl = int(y1+i*step)           
+                xr = int(x1+i*step)#end point at th right
+                yr = int(y1)
                 if yl > y2:
                     xl = yl-y2+xl
                     yl = y2
@@ -172,69 +173,71 @@ class convertLabanScriptToView:
                 cv2.line(self.img, (xl,yl),(xr, yr),0,2)
                 i+=1
         elif lv=="low":
-            cv2.rectangle(self.img,(x1,y1),(x2,y2),0,-1)
+            #cv2.rectangle(self.img,((x1,y1),(x2,y2),0,-1))
+            cv2.rectangle(self.img,(int(x1),int(y1)),(int(x2),int(y2)),(0,0,0),-1)
         else:
-            print "Unknow Level: " + lv
-        #shape: trapezoid, polygon, triangle, rectangle
+            print ("Unknown Level: " + lv)
+        # shape: trapezoid, polygon, triangle, rectangle
         if dire=="right":
-            pts = np.array([[x1,y1-1],[x2+1,y1-1],[x2+1,(y1+y2)/2]],np.int32)
+            pts = np.array([[x1,y1-1],[x2+1,y1-1],[x2+1,int((y1+y2)/2)]],np.int32)
             cv2.fillPoly(self.img,[pts],255)
-            pts = np.array([[x1,y2+1],[x2+1,y2+1],[x2+1,(y1+y2)/2]],np.int32)
+            pts = np.array([[x1,y2+1],[x2+1,y2+1],[x2+1,int((y1+y2)/2)]],np.int32)
             cv2.fillPoly(self.img,[pts],255)
-            pts = np.array([[x1,y1],[x1,y2],[x2,(y1+y2)/2]],np.int32)
+            pts = np.array([[x1,y1],[x1,y2],[x2,int((y1+y2)/2)]],np.int32)
             cv2.polylines(self.img, [pts], True, 0, 2)
         elif dire=="left":
-            pts = np.array([[x1-1,y1-1],[x2,y1-1],[x1-1,(y1+y2)/2]],np.int32)
+            pts = np.array([[x1-1,y1-1],[x2,y1-1],[x1-1,int((y1+y2)/2)]],np.int32)
             cv2.fillPoly(self.img,[pts],255)
-            pts = np.array([[x1-1,y2+1],[x2,y2+1],[x1-1,(y1+y2)/2]],np.int32)
+            pts = np.array([[x1-1,y2+1],[x2,y2+1],[x1-1,int((y1+y2)/2)]],np.int32)
             cv2.fillPoly(self.img,[pts],255)
             pts = np.array([[x1,(y1+y2)/2],[x2,y1],[x2,y2]],np.int32)
             cv2.polylines(self.img, [pts], True, 0, 2)
         elif dire=="left forward":
-            pts = np.array([[x1,y1-1],[x2+1,y1-1],[x2+1,y1+(y2-y1)/3]],np.int32)
+            pts = np.array([[x1,y1-1],[x2+1,y1-1],[x2+1,y1+int((y2-y1)/3)]],np.int32)
             cv2.fillPoly(self.img,[pts],255)
-            pts = np.array([[x1,y1],[x2,y1+(y2-y1)/3],[x2,y2],[x1,y2]],np.int32)
+            pts = np.array([[x1,y1],[x2,y1+int((y2-y1)/3)],[x2,y2],[x1,y2]],np.int32)
             cv2.polylines(self.img, [pts], True, 0, 2)
         elif dire=="right forward":
-            pts = np.array([[x1-1,y1-1],[x2+1,y1-1],[x1-1,y1+(y2-y1)/3]],np.int32)
+            pts = np.array([[x1-1,y1-1],[x2+1,y1-1],[x1-1,y1+int((y2-y1)/3)]],np.int32)
             cv2.fillPoly(self.img,[pts],255)
-            pts = np.array([[x1,y1+(y2-y1)/3],[x2,y1],[x2,y2],[x1,y2]],np.int32)
+            pts = np.array([[x1,y1+int((y2-y1)/3)],[x2,y1],[x2,y2],[x1,y2]],np.int32)
             cv2.polylines(self.img, [pts], True, 0, 2)
         elif dire=="left backward":
-            pts = np.array([[x1,y2+1],[x2+1,y2+1],[x2+1,y2-(y2-y1)/3]],np.int32)
+            pts = np.array([[x1,y2+1],[x2+1,y2+1],[x2+1,y2-int((y2-y1)/3)]],np.int32)
             cv2.fillPoly(self.img,[pts],255)
-            pts = np.array([[x1,y1],[x2,y1],[x2,y2-(y2-y1)/3],[x1,y2]],np.int32)
+            pts = np.array([[x1,y1],[x2,y1],[x2,y2-int((y2-y1)/3)],[x1,y2]],np.int32)
             cv2.polylines(self.img, [pts], True, 0, 2)
         elif dire=="right backward":
-            pts = np.array([[x1-1,y2+1],[x2+1,y2+1],[x1-1,y2-(y2-y1)/3]],np.int32)
+            pts = np.array([[x1-1,y2+1],[x2+1,y2+1],[x1-1,y2-int((y2-y1)/3)]],np.int32)
             cv2.fillPoly(self.img,[pts],255)
             pts = np.array([[x1,y1],[x2,y1],[x2,y2],[x1,y2-(y2-y1)/3]],np.int32)
             cv2.polylines(self.img, [pts], True, 0, 2)
         elif dire=="forward" and side=="right":
-            cv2.rectangle(self.img,(x1+(x2-x1)/2,y1-1),(x2+1,y1+(y2-y1)/3),255,-1)
+            cv2.rectangle(self.img,(int(x1+(x2-x1)/2),y1-1),(x2+1,int(y1+(y2-y1)/3)),(255,0,0),-1)
             pts = np.array([[x1,y1],[x1+(x2-x1)/2,y1],[x1+(x2-x1)/2,y1+(y2-y1)/3],
                             [x2,y1+(y2-y1)/3],[x2,y2],[x1,y2]],np.int32)
             cv2.polylines(self.img, [pts], True, 0, 2)
         elif dire=="forward" and side=="left":
-            cv2.rectangle(self.img,(x1-1,y1-1),(x1+(x2-x1)/2,y1+(y2-y1)/3),255,-1)
-            pts = np.array([[x1,y1+(y2-y1)/3],[x1+(x2-x1)/2,y1+(y2-y1)/3],[x1+(x2-x1)/2,y1],
+            cv2.rectangle(self.img,(x1-1,y1-1),(int(x1+(x2-x1)/2),y1+int((y2-y1)/3)),(255,0,0),-1)
+            pts = np.array([[x1,y1+(y2-y1)/3],[int(x1+(x2-x1)/2),y1+int((y2-y1)/3)],[x1+(x2-x1)/2,y1],
                             [x2,y1],[x2,y2],[x1,y2]],np.int32)
             cv2.polylines(self.img, [pts], True, 0, 2)
         elif dire=="backward" and side=="right":
-            cv2.rectangle(self.img,(x1+(x2-x1)/2,y2-(y2-y1)/3),(x2+1,y2+1),255,-1)
-            pts = np.array([[x1,y1],[x2,y1],[x2,y2-(y2-y1)/3],
-                            [x1+(x2-x1)/2,y2-(y2-y1)/3],[x1+(x2-x1)/2,y2],[x1,y2]],np.int32)
+            cv2.rectangle(self.img,(int(x1+(x2-x1)/2),y2-int((y2-y1)/3)),(x2+1,y2+1),(255,0,0),-1)
+            pts = np.array([[x1,y1],[x2,y1],[x2,y2-int((y2-y1)/3)],
+                            [int(x1+(x2-x1)/2),y2-int((y2-y1)/3)],[x1+(x2-x1)/2,y2],[x1,y2]],np.int32)
             cv2.polylines(self.img, [pts], True, 0, 2)
         elif dire=="backward" and side=="left":
-            cv2.rectangle(self.img,(x1-1,y2-(y2-y1)/3),(x1+(x2-x1)/2,y2+1),255,-1)
+            cv2.rectangle(self.img,(x1-1,y2-int((y2-y1)/3)),(int(x1+(x2-x1)/2),y2+1),(255,0,0),-1)
             pts = np.array([[x1,y1],[x2,y1],[x2,y2],
-                            [x1+(x2-x1)/2,y2],[x1+(x2-x1)/2,y2-(y2-y1)/3],
+                            [int(x1+(x2-x1)/2),y2],[int(x1+(x2-x1)/2),y2-int((y2-y1)/3)],
                             [x1,y2-(y2-y1)/3]],np.int32)
             cv2.polylines(self.img, [pts], True, 0, 2)
         elif dire=="place":#"Place"
-            cv2.rectangle(self.img,(x1,y1),(x2,y2),0,2)
+            #print("Error in statement")
+            cv2.rectangle(self.img,(x1,y1),(x2,y2),(0,0,0),2)
         else:
-            print "Unknow Direction: " + side + ": " + dire
+            print ("Unknown Direction: " + side + ": " + dire)
     
     #------------------------------------------------------------------------------
     # draw one column of labanotation for one limb
