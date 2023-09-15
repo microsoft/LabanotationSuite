@@ -28,7 +28,6 @@ except ImportError:
     import tkMessageBox as messagebox
 
 sys.path.append(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'tool'))
-sys.path.append(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'laban_tool'))
 
 import settings
 
@@ -36,9 +35,9 @@ from . import labanProcessor as lp
 
 import kp_extractor as kpex
 
-import tool.accessory as ac
-from tool import wavfilter as wf
-from tool import cluster as cl
+import accessory as ac
+import wavfilter as wf
+import cluster as cl
 
 class Algorithm:
     algorithm = None

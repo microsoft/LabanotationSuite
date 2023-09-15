@@ -53,8 +53,7 @@ def loadKinectDataFile(filePath, fFillGap = False):
         temp = line.split(',')
         if len(temp) < 1+25*3:
             break
-
-        currentTime = int(temp[0])
+        currentTime = int(float(temp[0]))
 
         tempBody = np.zeros(1, dtype=bType)
         tempBody['filled'] = False
@@ -78,7 +77,7 @@ def loadKinectDataFile(filePath, fFillGap = False):
             tempPoint['x'] =  float(temp[1+j*4])
             tempPoint['y'] =  float(temp[2+j*4])
             tempPoint['z'] =  float(temp[3+j*4])
-            tempPoint['ts'] = int(temp[4+j*4])
+            tempPoint['ts'] = int(float(temp[4+j*4]))
             tempBody[0][j+2] = tempPoint
 
         # fill time gap when needed
